@@ -1,0 +1,27 @@
+{
+  "name": "dipantry/rajaongkir",
+  "description": "Library for RajaOngkir API",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.1"
+  },
+  "authors": [
+    {
+      "role": "Developer",
+      "name": "Auriga Aristo",
+      "email": "aurigaaristo@gmail.com",
+      "homepage": "https://aurigaaristo.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Dipantry\\RajaOngkir\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
