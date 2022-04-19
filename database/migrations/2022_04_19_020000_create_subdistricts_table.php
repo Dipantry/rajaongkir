@@ -14,13 +14,13 @@ return new class extends Migration
     {
         Schema::create(config('dipantry.rajaongkir.table_prefix').'subdistricts', function ($table) {
             $table->increments('id');
-            $table->string('subdistrict_id');
-            $table->string('province_id');
-            $table->string('province');
-            $table->string('city_id');
-            $table->string('city');
-            $table->string('type');
-            $table->string('subdistrict_name');
+            $table->string('subdistrict_id', 255);
+            $table->string('province_id', 255);
+            $table->string('province', 255);
+            $table->string('city_id', 255);
+            $table->string('city', 255);
+            $table->string('type', 255);
+            $table->string('subdistrict_name', 255);
             $table->timestamps();
         });
     }
