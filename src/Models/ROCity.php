@@ -14,6 +14,8 @@ class ROCity extends Model
 {
     protected $table = 'cities';
 
+    public $timestamps = false;
+
     public function __construct(array $attributes = [])
     {
         $this->table = config('dipantry.rajaongkir.table_prefix').'cities';

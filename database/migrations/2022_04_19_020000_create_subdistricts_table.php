@@ -19,8 +19,6 @@ return new class extends Migration
             $table->foreignId('city_id')->references('id')
                 ->on(config('dipantry.rajaongkir.table_prefix').'cities')
                 ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 

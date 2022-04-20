@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create(config('dipantry.rajaongkir.table_prefix').'provinces', function ($table) {
             $table->id();
             $table->string('name', 255);
-            $table->timestamps();
         });
     }
 

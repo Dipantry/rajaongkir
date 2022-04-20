@@ -21,8 +21,6 @@ return new class extends Migration
             $table->foreignId('province_id')->references('id')
                 ->on(config('dipantry.rajaongkir.table_prefix').'provinces')
                 ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 

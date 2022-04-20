@@ -11,6 +11,8 @@ class ROProvince extends Model
 {
     protected $table = 'provinces';
 
+    public $timestamps = false;
+
     public function __construct(array $attributes = [])
     {
         $this->table = config('dipantry.rajaongkir.table_prefix').'provinces';

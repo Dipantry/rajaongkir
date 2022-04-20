@@ -11,6 +11,8 @@ class ROSubDistrict extends Model
 {
     protected $table = 'subdistricts';
 
+    public $timestamps = false;
+
     public function __construct(array $attributes = [])
     {
         $this->table = config('dipantry.rajaongkir.table_prefix').'subdistricts';
