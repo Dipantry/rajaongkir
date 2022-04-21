@@ -1,5 +1,7 @@
 <?php
 
+namespace Dipantry\Rajaongkir\Seeds;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
     private function reset()
     {
-        DB::table(config('dipantry.rajaongkir.table_prefix').'provinces')->truncate();
-        DB::table(config('dipantry.rajaongkir.table_prefix').'cities')->truncate();
+        DB::table(config('rajaongkir.table_prefix').'provinces')->truncate();
+        DB::table(config('rajaongkir.table_prefix').'cities')->truncate();
     }
 }

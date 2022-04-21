@@ -38,7 +38,7 @@ class SeedCommand extends Command
      */
     public function handle()
     {
-        $userPackage = config('dipantry.rajaongkir.package');
+        $userPackage = config('rajaongkir.package');
 
         if ($userPackage == 'basic' || $userPackage == 'starter'){
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\Seeds\DatabaseSeeder', '--force' => true]);

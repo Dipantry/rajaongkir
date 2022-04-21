@@ -6,7 +6,7 @@ class PackagePolicy
 
     public function __construct()
     {
-        $this->package = config('dipantry.rajaongkir.package');
+        $this->package = config('rajaongkir.package');
     }
 
     public function allowGetSupportedCouriers(): bool

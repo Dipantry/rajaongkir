@@ -1,5 +1,7 @@
 <?php
 
+namespace Dipantry\Rajaongkir\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -15,7 +17,7 @@ class ROSubDistrict extends Model
 
     public function __construct(array $attributes = [])
     {
-        $this->table = config('dipantry.rajaongkir.table_prefix').'subdistricts';
+        $this->table = config('rajaongkir.table_prefix').'subdistricts';
         parent::__construct($attributes);
     }
 

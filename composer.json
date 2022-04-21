@@ -23,12 +23,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Dipantry\\RajaOngkir\\": "src/"
+      "Dipantry\\Rajaongkir\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Dipantry\\RajaOngkir\\Tests\\": "tests/"
+      "Dipantry\\Rajaongkir\\Tests\\": "tests/"
     }
   },
   "minimum-stability": "dev",

@@ -1,5 +1,7 @@
 <?php
 
+namespace Dipantry\Rajaongkir\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -15,12 +17,12 @@ class ROProvince extends Model
 
     public function __construct(array $attributes = [])
     {
-        $this->table = config('dipantry.rajaongkir.table_prefix').'provinces';
+        $this->table = config('rajaongkir.table_prefix').'provinces';
         parent::__construct($attributes);
     }
 
     public function cities(): HasMany
     {
-        return $this->hasMany(ROCity::class, 'province_id');
+        return $this->hasMany(ROCity::class, 'province_id', 'id');
     }
 }

@@ -12,13 +12,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('dipantry.rajaongkir.table_prefix').'subdistricts', function ($table) {
+        Schema::create(config('rajaongkir.table_prefix').'subdistricts', function ($table) {
             $table->id();
             $table->string('name', 255);
-
-            $table->foreignId('city_id')->references('id')
-                ->on(config('dipantry.rajaongkir.table_prefix').'cities')
-                ->onDelete('cascade');
+            $table->bigInteger('city_id');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('dipantry.rajaongkir.table_prefix').'subdistricts');
+        Schema::dropIfExists(config('rajaongkir.table_prefix').'subdistricts');
     }
 };

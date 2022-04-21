@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('dipantry.rajaongkir.table_prefix').'provinces', function ($table) {
+        Schema::create(config('rajaongkir.table_prefix').'provinces', function ($table) {
             $table->id();
             $table->string('name', 255);
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop(config('dipantry.rajaongkir.table_prefix').'provinces');
+        Schema::drop(config('rajaongkir.table_prefix').'provinces');
     }
 };

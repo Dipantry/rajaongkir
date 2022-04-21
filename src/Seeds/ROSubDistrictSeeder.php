@@ -1,5 +1,7 @@
 <?php
 
+namespace Dipantry\Rajaongkir\Seeds;
+
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
@@ -7,16 +9,14 @@ class ROSubDistrictSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->table = config('dipantry.rajaongkir.table_prefix').'subdistricts';
-        $this->filename = '../../../resources/csv/subdistrict.csv';
+        $this->table = config('rajaongkir.table_prefix').'subdistricts';
+        $this->filename = '../../resources/csv/subdistrict.csv';
         $this->csv_delimiter = ',';
         $this->offset_rows = 1;
         $this->mapping = [
             0 => 'id',
-            1 => 'province_id',
-            3 => 'type',
-            4 => 'name',
-            5 => 'postal_code',
+            3 => 'city_id',
+            6 => 'subdistrict_name'
         ];
     }
 

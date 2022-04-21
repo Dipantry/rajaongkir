@@ -1,5 +1,7 @@
 <?php
 
+namespace Dipantry\Rajaongkir\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,17 +20,17 @@ class ROCity extends Model
 
     public function __construct(array $attributes = [])
     {
-        $this->table = config('dipantry.rajaongkir.table_prefix').'cities';
+        $this->table = config('rajaongkir.table_prefix').'cities';
         parent::__construct($attributes);
     }
 
     public function province(): BelongsTo
     {
-        return $this->belongsTo(ROProvince::class, 'province_id');
+        return $this->belongsTo(ROProvince::class);
     }
 
     public function subdistricts(): HasMany
     {
-        return $this->hasMany(ROSubdistrict::class, 'city_id');
+        return $this->hasMany(ROSubdistrict::class);
     }
 }
