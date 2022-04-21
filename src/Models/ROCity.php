@@ -31,6 +31,6 @@ class ROCity extends Model
 
     public function subdistricts(): HasMany
     {
-        return $this->hasMany(ROSubdistrict::class);
+        return $this->hasMany(ROSubdistrict::class, 'city_id', 'id');
     }
 }

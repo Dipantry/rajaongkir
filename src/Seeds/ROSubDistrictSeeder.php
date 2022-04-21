@@ -16,7 +16,7 @@ class ROSubDistrictSeeder extends CsvSeeder
         $this->mapping = [
             0 => 'id',
             3 => 'city_id',
-            6 => 'subdistrict_name'
+            6 => 'name'
         ];
     }
 

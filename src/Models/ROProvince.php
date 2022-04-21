@@ -4,6 +4,7 @@ namespace Dipantry\Rajaongkir\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * @property int $id
@@ -24,5 +25,17 @@ class ROProvince extends Model
     public function cities(): HasMany
     {
         return $this->hasMany(ROCity::class, 'province_id', 'id');
+    }
+
+    public function subDistricts(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            ROSubDistrict::class,
+            ROCity::class,
+            'province_id',
+            'city_id',
+            'id',
+            'id'
+        );
     }
 }
