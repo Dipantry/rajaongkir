@@ -4,11 +4,10 @@ namespace Dipantry\Rajaongkir;
 
 use Dipantry\Rajaongkir\Controller\BaseRajaongkir;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
-use Exception;
 
 class Rajaongkir extends BaseRajaongkir
 {
-    /* @throws Exception */
+    /* @throws ApiResponseException */
     public function getOngkirCost(
         int $origin, int $destination, int $weight, string $courier,
         string $originType = 'city', string $destinationType = 'city',
@@ -28,8 +27,8 @@ class Rajaongkir extends BaseRajaongkir
                 'destination' => "{$destination}",
                 'weight' => $weight,
                 'courier' => $courier,
-                'origin_type' => $originType,
-                'destination_type' => $destinationType,
+                'originType' => $originType,
+                'destinationType' => $destinationType,
                 'length' => $length,
                 'width' => $width,
                 'height' => $height,

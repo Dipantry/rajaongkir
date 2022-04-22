@@ -10,7 +10,7 @@ class ROSubDistrictSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = config('rajaongkir.table_prefix').'subdistricts';
-        $this->filename = '../../resources/csv/subdistrict.csv';
+        $this->filename = dirname(__FILE__, 2) . '../../resources/csv/subdistrict.csv';
         $this->csv_delimiter = ',';
         $this->offset_rows = 1;
         $this->mapping = [
