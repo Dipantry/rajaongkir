@@ -40,11 +40,15 @@ class SeedCommand extends Command
     {
         $userPackage = config('rajaongkir.package');
 
-        if ($userPackage == 'basic' || $userPackage == 'starter'){
+        if ($userPackage == 'starter'){
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseSeeder', '--force' => true]);
-            $this->info('Seeded: RajaOngkir Starter or Basic Package');
+            $this->info('Seeded: RajaOngkir Starter Package');
 
-        } elseif ($userPackage == 'pro') {
+        } else if ($userPackage == 'basic') {
+            Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseBasicSeeder', '--force' => true]);
+            $this->info('Seeded: RajaOngkir Basic Package');
+
+        } else if ($userPackage == 'pro') {
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseProSeeder', '--force' => true]);
             $this->info('Seeded: RajaOngkir Pro Package');
 

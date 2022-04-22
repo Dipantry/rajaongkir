@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class DatabaseSeeder extends Seeder
+class DatabaseBasicSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ROProvinceSeeder::class);
         $this->call(ROCitySeeder::class);
+        $this->call(ROCountrySeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder
     {
         DB::table(config('rajaongkir.table_prefix').'provinces')->truncate();
         DB::table(config('rajaongkir.table_prefix').'cities')->truncate();
+        DB::table(config('rajaongkir.table_prefix').'countries')->truncate();
     }
 }

@@ -5,7 +5,7 @@ namespace Dipantry\Rajaongkir\Seeds;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
-class ROCitiesSeeder extends CsvSeeder
+class ROCitySeeder extends CsvSeeder
 {
     public function __construct()
     {

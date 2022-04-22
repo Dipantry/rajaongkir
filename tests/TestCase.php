@@ -8,7 +8,7 @@ use Dipantry\Rajaongkir\ServiceProvider;
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     public string $provinceSeeder = 'Dipantry\Rajaongkir\Seeds\ROProvinceSeeder';
-    public string $citySeeder = 'Dipantry\Rajaongkir\Seeds\ROCitiesSeeder';
+    public string $citySeeder = 'Dipantry\Rajaongkir\Seeds\ROCitySeeder';
     public string $subDistrictSeeder = 'Dipantry\Rajaongkir\Seeds\ROSubDistrictSeeder';
 
     public function setUp(): void
