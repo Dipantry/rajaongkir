@@ -3,6 +3,7 @@
 namespace Dipantry\Rajaongkir\Tests\Database;
 
 use Dipantry\Rajaongkir\Models\ROCity;
+use Dipantry\Rajaongkir\Models\ROCountry;
 use Dipantry\Rajaongkir\Models\ROSubDistrict;
 use Dipantry\Rajaongkir\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
@@ -21,6 +22,9 @@ class DatabaseTest extends TestCase
 
         $citySubDistricts = ROCity::first()->subDistricts;
         $this->assertEmpty($citySubDistricts);
+
+        $countries = ROCountry::all();
+        $this->assertEmpty($countries);
     }
 
     public function testBasicDatabaseSeed(){
@@ -35,6 +39,9 @@ class DatabaseTest extends TestCase
 
         $citySubDistricts = ROCity::first()->subDistricts;
         $this->assertEmpty($citySubDistricts);
+
+        $countries = ROCountry::all();
+        $this->assertNotEmpty($countries);
     }
 
     public function testProDatabaseSeed(){
@@ -49,5 +56,8 @@ class DatabaseTest extends TestCase
 
         $citySubDistricts = ROCity::first()->subDistricts;
         $this->assertNotEmpty($citySubDistricts);
+
+        $countries = ROCountry::all();
+        $this->assertNotEmpty($countries);
     }
 }

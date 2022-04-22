@@ -10,6 +10,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     public string $provinceSeeder = 'Dipantry\Rajaongkir\Seeds\ROProvinceSeeder';
     public string $citySeeder = 'Dipantry\Rajaongkir\Seeds\ROCitySeeder';
     public string $subDistrictSeeder = 'Dipantry\Rajaongkir\Seeds\ROSubDistrictSeeder';
+    public string $countrySeeder = 'Dipantry\Rajaongkir\Seeds\ROCountrySeeder';
 
     public function setUp(): void
     {
