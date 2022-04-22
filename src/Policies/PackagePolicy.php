@@ -1,12 +1,14 @@
 <?php
 
+namespace Dipantry\Rajaongkir\Policies;
+
 class PackagePolicy
 {
     private string $package;
 
-    public function __construct()
+    public function __construct(string $package)
     {
-        $this->package = config('rajaongkir.package');
+        $this->package = $package;
     }
 
     public function allowGetSupportedCouriers(): bool

@@ -2,3 +2,6 @@ vendor/
 .idea
 build/
 .phpunit.result.cache
+
+# file ignore because contains api-key
+tests/TestingConfigData.php
