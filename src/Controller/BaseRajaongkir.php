@@ -43,8 +43,8 @@ class BaseRajaongkir
             $result = $response['rajaongkir']['results'];
         } catch (Exception $e) {
             throw new ApiResponseException(
-                message: $response['rajaongkir']['status']['description'],
-                code: $response['rajaongkir']['status']['code']
+                message: $response['rajaongkir']['status']['description'] ?? 'Unknown Error',
+                code: $response['rajaongkir']['status']['code'] ?? 500
             );
         }
         return $result;
@@ -61,8 +61,8 @@ class BaseRajaongkir
             $result = $response['rajaongkir']['results'];
         } catch (Exception $e) {
             throw new ApiResponseException(
-                message: $response['rajaongkir']['status']['description'],
-                code: $response['rajaongkir']['status']['code']
+                message: $response['rajaongkir']['status']['description'] ?? 'Unknown Error',
+                code: $response['rajaongkir']['status']['code'] ?? 500
             );
         }
         return $result;

@@ -45,4 +45,40 @@ class Rajaongkir extends BaseRajaongkir
 
         return $this->postHttp('/cost', $body);
     }
+
+    /* @throws ApiResponseException */
+    public function getInternationalOngkirCost(
+        int $origin, int $destination, int $weight, string $courier,
+        int $length = null, int $width = null, int $height = null, int $diameter = null
+    ){
+        if (!$this->checkCourierCode($courier)){
+            throw new ApiResponseException('Courier code not found', 400);
+        }
+
+        if (!$this->policy->allowGetInternationalCosts()){
+            throw new ApiResponseException('You can\'t get international costs', 400);
+        }
+
+        if ($this->package == 'pro'){
+            $body = [
+                'origin' => "{$origin}",
+                'destination' => "{$destination}",
+                'weight' => $weight,
+                'courier' => $courier,
+                'length' => $length,
+                'width' => $width,
+                'height' => $height,
+                'diameter' => $diameter
+            ];
+        } else {
+            $body = [
+                'origin' => "{$origin}",
+                'destination' => "{$destination}",
+                'weight' => $weight,
+                'courier' => $courier
+            ];
+        }
+
+        return $this->postHttp('/v2/internationalCost', $body);
+    }
 }

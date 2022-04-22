@@ -49,4 +49,18 @@ class LocalCostTest extends TestCase
         }
         $this->assertEmpty($response);
     }
+
+    public function testGetCostUnknownOrigin()
+    {
+        $response = (new Rajaongkir())
+            ->getOngkirCost(999, 500, 300, RajaongkirCourier::LION_PARCEL);
+        $this->assertNotEmpty($response);
+    }
+
+    public function testGetCostUnknownDestination()
+    {
+        $response = (new Rajaongkir())
+            ->getOngkirCost(1, 999, 300, RajaongkirCourier::LION_PARCEL);
+        $this->assertNotEmpty($response);
+    }
 }
