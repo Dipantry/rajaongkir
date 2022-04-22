@@ -1,6 +1,6 @@
 <?php
 
-namespace Dipantry\Rajaongkir\Tests\Http;
+namespace Dipantry\Rajaongkir\Tests\Http\Starter;
 
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\Rajaongkir;

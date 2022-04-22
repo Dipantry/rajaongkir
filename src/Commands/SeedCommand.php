@@ -2,6 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Commands;
 
+use Dipantry\Rajaongkir\Helper\SystemSecurity;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -36,9 +37,14 @@ class SeedCommand extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $userPackage = config('rajaongkir.package');
+
+        if (!SystemSecurity::checkApiKey()){
+            $this->error('API Key is not valid');
+            return;
+        }
 
         if ($userPackage == 'starter'){
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseSeeder', '--force' => true]);
