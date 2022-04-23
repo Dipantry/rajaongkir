@@ -14,7 +14,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->bind('rajaongkir', function (){
-
+            return new Rajaongkir();
         });
 
         $this->commands([
