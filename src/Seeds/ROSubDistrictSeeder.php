@@ -2,6 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Seeds;
 
+use Dipantry\Rajaongkir\Helper\SystemSecurity;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,10 @@ class ROSubDistrictSeeder extends CsvSeeder
      */
     public function run()
     {
+        if (!SystemSecurity::allowSubDistrictSeeding()){
+            return;
+        }
+
         DB::disableQueryLog();
         DB::table($this->table);
 

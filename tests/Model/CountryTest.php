@@ -4,10 +4,17 @@ namespace Dipantry\Rajaongkir\Tests\Model;
 
 use Dipantry\Rajaongkir\Models\ROCountry;
 use Dipantry\Rajaongkir\Tests\TestCase;
+use Dipantry\Rajaongkir\Tests\TestingConfigData;
 use Illuminate\Database\Eloquent\Collection;
 
 class CountryTest  extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        TestingConfigData::loadProAPI();
+    }
+
     public function testCountries(){
         $this->seed($this->countrySeeder);
 

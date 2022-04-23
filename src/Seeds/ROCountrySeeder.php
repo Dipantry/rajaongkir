@@ -2,6 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Seeds;
 
+use Dipantry\Rajaongkir\Helper\SystemSecurity;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
@@ -26,6 +27,10 @@ class ROCountrySeeder extends CsvSeeder
      */
     public function run()
     {
+        if (!SystemSecurity::allowCountrySeeding()){
+            return;
+        }
+
         DB::disableQueryLog();
         DB::table($this->table);
 

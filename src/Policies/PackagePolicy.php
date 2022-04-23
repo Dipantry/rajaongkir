@@ -31,6 +31,11 @@ class PackagePolicy
         return $this->package == 'pro';
     }
 
+    public function allowGetCountries(): bool
+    {
+        return $this->package == 'basic' || $this->package == 'pro';
+    }
+
     public function allowGetCosts(string $courierCode): bool
     {
         if ($this->package == 'starter'){

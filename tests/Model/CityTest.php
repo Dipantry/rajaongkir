@@ -6,10 +6,17 @@ use Dipantry\Rajaongkir\Models\ROCity;
 use Dipantry\Rajaongkir\Models\ROProvince;
 use Dipantry\Rajaongkir\Models\ROSubDistrict;
 use Dipantry\Rajaongkir\Tests\TestCase;
+use Dipantry\Rajaongkir\Tests\TestingConfigData;
 use Illuminate\Database\Eloquent\Collection;
 
 class CityTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        TestingConfigData::loadProAPI();
+    }
+
     public function testCityHasManySubDistricts(){
         $this->seed($this->citySeeder);
         $this->seed($this->subDistrictSeeder);
