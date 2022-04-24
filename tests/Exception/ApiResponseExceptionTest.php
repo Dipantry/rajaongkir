@@ -7,7 +7,9 @@ use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
 use Exception;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
 
 class ApiResponseExceptionTest extends TestCase
 {
@@ -47,6 +49,19 @@ class ApiResponseExceptionTest extends TestCase
         } catch (Exception $e) {
             $this->assertInstanceOf(ApiResponseException::class, $e);
             $this->assertEquals("Unknown API Package", $e->getMessage());
+        }
+    }
+
+    public function testConnectionTimeout()
+    {
+        $this->loadStarterApi();
+        Config::set('rajaongkir.timeout', 1);
+
+        try {
+            (new RajaongkirService())->getOngkirCost(1, 99, 300, RajaongkirCourier::JNE);
+        } catch (Exception $e) {
+            $this->assertInstanceOf(ApiResponseException::class, $e);
+            $this->assertEquals("Connection Timed Out", $e->getMessage());
         }
     }
 }
