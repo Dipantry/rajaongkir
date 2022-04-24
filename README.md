@@ -1,7 +1,7 @@
 # RajaOngkir API wrapper for PHP 8.0+
-[![Latest Version](https://img.shields.io/github/v/release/dipantry/rajaongkir?label=Release&sort=semver)](https://github.com/dipantry/rajaongkir/releases)
+[![Latest Version](https://img.shields.io/github/v/release/dipantry/rajaongkir?label=Release&sort=semver&style=flat-square)](https://github.com/dipantry/rajaongkir/releases)
 [![Packagist Version](https://img.shields.io/packagist/v/dipantry/rajaongkir?label=Packagist)](https://packagist.org/packages/dipantry/rajaongkir)
-![PHP Version](https://img.shileds.io/packagist/php-v/dipantry/rajaongkir?label=PHP)
+![PHP Version](https://img.shields.io/packagist/php-v/dipantry/rajaongkir?label=PHP%20Version)
 [![MIT Licensed](https://img.shields.io/github/license/dipantry/rajaongkir?label=License&style=flat-square)](LICENSE)
 
 Package Laravel atau Lumen yang menyimpan data provinsi, kota, kecamatan, dan negara yang terdaftar pada website [RajaOngkir](https://rajaongkir.com/). Package ini akan membantu Anda untuk mengambil informasi dari API RajaOngkir.
