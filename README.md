@@ -1,4 +1,5 @@
 # RajaOngkir API wrapper for PHP 8.0+
+![run-tests](https://github.com/dipantry/rajaongkir/workflows/run-tests/badge.svg)
 [![Latest Version](https://img.shields.io/github/v/release/dipantry/rajaongkir?label=Release&sort=semver&style=flat-square)](https://github.com/dipantry/rajaongkir/releases)
 [![Packagist Version](https://img.shields.io/packagist/v/dipantry/rajaongkir?label=Packagist)](https://packagist.org/packages/dipantry/rajaongkir)
 ![PHP Version](https://img.shields.io/packagist/php-v/dipantry/rajaongkir?label=PHP%20Version)
