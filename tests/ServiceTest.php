@@ -26,4 +26,16 @@ class ServiceTest extends TestCase
         $results = \Rajaongkir::getInternationalOngkirCost(1, 200, 300, RajaongkirCourier::JNE);
         $this->assertNotEmpty($results);
     }
+
+    public function testGetCurrency()
+    {
+        $result = \Rajaongkir::getCurrency();
+        $this->assertNotEmpty($result);
+    }
+
+    public function testGetWaybill()
+    {
+        $result = \Rajaongkir::getWaybill("003013007979", RajaongkirCourier::SICEPAT);
+        $this->assertNotEmpty($result);
+    }
 }
