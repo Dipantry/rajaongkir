@@ -55,7 +55,7 @@ class BaseRajaongkir
                 'key' => $this->apiKey,
             ])->timeout($this->timeout)->get($this->baseUrl.$url, $params);
         } catch (Exception){
-            throw new ApiResponseException("Connection Timed Out");
+            throw new ApiResponseException('Connection Timed Out');
         }
 
         try {
@@ -73,15 +73,12 @@ class BaseRajaongkir
     /* @throws ApiResponseException */
     public function postHttp($url, $body = [], bool $manyResults = true)
     {
-        $response = Http::withHeaders([
-            'key' => $this->apiKey,
-        ])->post($this->baseUrl.$url, $body);
         try {
             $response = Http::withHeaders([
-                'key' => $this->apiKey
-            ])->timeout($this->timeout)->post($this->baseUrl . $url, $body);
+                'key' => $this->apiKey,
+            ])->timeout($this->timeout)->post($this->baseUrl.$url, $body);
         } catch (Exception){
-            throw new ApiResponseException("Connection Timed Out");
+            throw new ApiResponseException('Connection Timed Out');
         }
 
         try {
