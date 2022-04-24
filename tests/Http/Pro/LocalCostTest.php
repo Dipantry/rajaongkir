@@ -2,9 +2,11 @@
 
 namespace Dipantry\Rajaongkir\Tests\Http\Pro;
 
+use Dipantry\Rajaongkir\Exception\ApiResponseException;
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
+use Exception;
 
 class LocalCostTest extends TestCase
 {
@@ -14,6 +16,7 @@ class LocalCostTest extends TestCase
         $this->loadProApi();
     }
 
+    /* @throws ApiResponseException */
     public function testGetCostSuccess()
     {
         $response = (new RajaongkirService())
@@ -21,6 +24,7 @@ class LocalCostTest extends TestCase
         $this->assertNotEmpty($response);
     }
 
+    /* @throws ApiResponseException */
     public function testGetCostSubDistrictSuccess()
     {
         $response = (new RajaongkirService())
@@ -29,6 +33,7 @@ class LocalCostTest extends TestCase
         $this->assertNotEmpty($response);
     }
 
+    /* @throws ApiResponseException */
     public function testCostOtherCourier()
     {
         $response = (new RajaongkirService())
@@ -42,13 +47,14 @@ class LocalCostTest extends TestCase
         try {
             $response = (new RajaongkirService())
                 ->getOngkirCost(1, 500, 300, "Lorem Ipsum");
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }
         $this->assertEmpty($response);
     }
 
+    /* @throws ApiResponseException */
     public function testGetCostUnknownOrigin()
     {
         $response = (new RajaongkirService())
@@ -56,6 +62,7 @@ class LocalCostTest extends TestCase
         $this->assertNotEmpty($response);
     }
 
+    /* @throws ApiResponseException */
     public function testGetCostUnknownDestination()
     {
         $response = (new RajaongkirService())

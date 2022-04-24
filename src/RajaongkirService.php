@@ -23,8 +23,8 @@ class RajaongkirService extends BaseRajaongkir
 
         if ($this->package == 'pro'){
             $body = [
-                'origin' => "{$origin}",
-                'destination' => "{$destination}",
+                'origin' => "$origin",
+                'destination' => "$destination",
                 'weight' => $weight,
                 'courier' => $courier,
                 'originType' => $originType,
@@ -36,8 +36,8 @@ class RajaongkirService extends BaseRajaongkir
             ];
         } else {
             $body = [
-                'origin' => "{$origin}",
-                'destination' => "{$destination}",
+                'origin' => "$origin",
+                'destination' => "$destination",
                 'weight' => $weight,
                 'courier' => $courier
             ];
@@ -61,8 +61,8 @@ class RajaongkirService extends BaseRajaongkir
 
         if ($this->package == 'pro'){
             $body = [
-                'origin' => "{$origin}",
-                'destination' => "{$destination}",
+                'origin' => "$origin",
+                'destination' => "$destination",
                 'weight' => $weight,
                 'courier' => $courier,
                 'length' => $length,
@@ -72,8 +72,8 @@ class RajaongkirService extends BaseRajaongkir
             ];
         } else {
             $body = [
-                'origin' => "{$origin}",
-                'destination' => "{$destination}",
+                'origin' => "$origin",
+                'destination' => "$destination",
                 'weight' => $weight,
                 'courier' => $courier
             ];

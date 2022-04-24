@@ -11,7 +11,7 @@ class SystemSecurity
     {
         try {
             (new BaseRajaongkir())->getHttp('/province', []);
-        } catch (ApiResponseException $e) {
+        } catch (ApiResponseException) {
             return false;
         }
         return true;
@@ -21,7 +21,7 @@ class SystemSecurity
     {
         try {
             (new BaseRajaongkir())->getHttp('/province', []);
-        } catch (ApiResponseException $e) {
+        } catch (ApiResponseException) {
             return false;
         }
         return true;
@@ -31,7 +31,7 @@ class SystemSecurity
     {
         try {
             (new BaseRajaongkir())->getHttp('/city', []);
-        } catch (ApiResponseException $e) {
+        } catch (ApiResponseException) {
             return false;
         }
         return true;
@@ -43,7 +43,7 @@ class SystemSecurity
             (new BaseRajaongkir())->getHttp('/subdistrict', [
                 'id' => '1',
             ]);
-        } catch (ApiResponseException $e) {
+        } catch (ApiResponseException) {
             return false;
         }
         return true;
@@ -55,7 +55,7 @@ class SystemSecurity
             (new BaseRajaongkir())->getHttp('/v2/internationalDestination', [
                 'id' => '1',
             ]);
-        } catch (ApiResponseException $e){
+        } catch (ApiResponseException){
             return false;
         }
         return true;

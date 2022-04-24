@@ -4,6 +4,7 @@ namespace Dipantry\Rajaongkir\Tests\Http\Starter;
 
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
+use Exception;
 
 class CurrencyTest extends TestCase
 {
@@ -19,7 +20,7 @@ class CurrencyTest extends TestCase
         try {
             $response = (new RajaongkirService())
                 ->getCurrency();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }

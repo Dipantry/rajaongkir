@@ -13,7 +13,7 @@ class DatabaseBasicSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Schema::disableForeignKeyConstraints();
         $this->reset();

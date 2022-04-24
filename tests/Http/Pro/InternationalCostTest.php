@@ -5,6 +5,7 @@ namespace Dipantry\Rajaongkir\Tests\Http\Pro;
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
+use Exception;
 
 class InternationalCostTest extends TestCase
 {
@@ -27,7 +28,7 @@ class InternationalCostTest extends TestCase
         try {
             $response = (new RajaongkirService())
                 ->getInternationalOngkirCost(1, 200, 300, "U");
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }

@@ -82,7 +82,7 @@ class BaseRajaongkir
     {
         try {
             return RajaongkirCourier::isValidValue($courierCode);
-        } catch (ReflectionException $e) {
+        } catch (ReflectionException) {
             return false;
         }
     }

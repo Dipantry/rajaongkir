@@ -5,6 +5,7 @@ namespace Dipantry\Rajaongkir\Tests\Http\Starter;
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
+use Exception;
 
 class WaybillTest extends TestCase
 {
@@ -20,7 +21,7 @@ class WaybillTest extends TestCase
         try {
             $response = (new RajaongkirService())
                 ->getWaybill("003013007979", RajaongkirCourier::SICEPAT);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }

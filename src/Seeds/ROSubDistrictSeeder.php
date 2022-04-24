@@ -26,7 +26,7 @@ class ROSubDistrictSeeder extends CsvSeeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         if (!SystemSecurity::allowSubDistrictSeeding()){
             return;
