@@ -5,7 +5,7 @@ namespace Dipantry\Rajaongkir\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id
+ * @property int    $id
  * @property string $name
  */
 class ROCountry extends Model

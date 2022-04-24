@@ -6,7 +6,7 @@ use Dipantry\Rajaongkir\Models\ROCountry;
 use Dipantry\Rajaongkir\Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
 
-class CountryTest  extends TestCase
+class CountryTest extends TestCase
 {
     public function setUp(): void
     {

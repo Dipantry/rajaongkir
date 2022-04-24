@@ -40,9 +40,10 @@ class PackagePolicy
 
     public function allowGetCosts(string $courierCode): bool
     {
-        if ($this->package == 'starter'){
+        if ($this->package == 'starter') {
             return $courierCode == 'jne' || $courierCode == 'pos' || $courierCode == 'tiki';
         }
+
         return $this->package == 'basic' || $this->package == 'pro';
     }
 
@@ -68,9 +69,10 @@ class PackagePolicy
 
     public function allowGetWaybill(string $courierCode): bool
     {
-        if ($this->package == 'basic'){
+        if ($this->package == 'basic') {
             return $courierCode == RajaongkirCourier::JNE;
         }
+
         return $this->package == 'pro';
     }
 }

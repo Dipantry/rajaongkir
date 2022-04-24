@@ -14,6 +14,7 @@ class SystemSecurity
         } catch (ApiResponseException) {
             return false;
         }
+
         return true;
     }
 
@@ -24,6 +25,7 @@ class SystemSecurity
         } catch (ApiResponseException) {
             return false;
         }
+
         return true;
     }
 
@@ -34,6 +36,7 @@ class SystemSecurity
         } catch (ApiResponseException) {
             return false;
         }
+
         return true;
     }
 
@@ -46,6 +49,7 @@ class SystemSecurity
         } catch (ApiResponseException) {
             return false;
         }
+
         return true;
     }
 
@@ -55,9 +59,10 @@ class SystemSecurity
             (new BaseRajaongkir())->getHttp('/v2/internationalDestination', [
                 'id' => '1',
             ]);
-        } catch (ApiResponseException){
+        } catch (ApiResponseException) {
             return false;
         }
+
         return true;
     }
 }

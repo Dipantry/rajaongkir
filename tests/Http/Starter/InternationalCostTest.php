@@ -18,6 +18,7 @@ class InternationalCostTest extends TestCase
     public function testGetInternationalCost()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
                 ->getInternationalOngkirCost(1, 200, 300, RajaongkirCourier::JNE);

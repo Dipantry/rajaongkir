@@ -11,7 +11,9 @@ use ReflectionException;
 
 class BaseRajaongkir
 {
-    protected string $apiKey, $package, $baseUrl;
+    protected string $apiKey;
+    protected string $package;
+    protected string $baseUrl;
     protected int $timeout;
     protected PackagePolicy $policy;
 
@@ -22,13 +24,13 @@ class BaseRajaongkir
     /* @throws ApiResponseException */
     public function __construct()
     {
-        if (empty(config('rajaongkir.api_key'))){
-            throw new ApiResponseException("API Key not specified");
+        if (empty(config('rajaongkir.api_key'))) {
+            throw new ApiResponseException('API Key not specified');
         } else {
             $this->apiKey = config('rajaongkir.api_key');
         }
 
-        if (empty($this->checkPackage())){
+        if (empty($this->checkPackage())) {
             $this->package = config('rajaongkir.package');
         } else {
             throw new ApiResponseException($this->checkPackage());
@@ -38,7 +40,7 @@ class BaseRajaongkir
 
         $this->baseUrl = match ($this->package) {
             'basic' => $this->basicBaseUrl,
-            'pro' => $this->proBaseUrl,
+            'pro'   => $this->proBaseUrl,
             default => $this->starterBaseUrl,
         };
 
@@ -50,8 +52,8 @@ class BaseRajaongkir
     {
         try {
             $response = Http::withHeaders([
-                'key' => $this->apiKey
-            ])->timeout($this->timeout)->get($this->baseUrl . $url, $params);
+                'key' => $this->apiKey,
+            ])->timeout($this->timeout)->get($this->baseUrl.$url, $params);
         } catch (Exception){
             throw new ApiResponseException("Connection Timed Out");
         }
@@ -64,12 +66,16 @@ class BaseRajaongkir
                 code: $response['rajaongkir']['status']['code'] ?? 500
             );
         }
+
         return $result;
     }
 
     /* @throws ApiResponseException */
     public function postHttp($url, $body = [], bool $manyResults = true)
     {
+        $response = Http::withHeaders([
+            'key' => $this->apiKey,
+        ])->post($this->baseUrl.$url, $body);
         try {
             $response = Http::withHeaders([
                 'key' => $this->apiKey
@@ -86,6 +92,7 @@ class BaseRajaongkir
                 code: $response['rajaongkir']['status']['code'] ?? 500
             );
         }
+
         return $result;
     }
 
@@ -102,12 +109,13 @@ class BaseRajaongkir
     {
         $package = config('rajaongkir.package');
 
-        if (empty($package)){
-            return "API Package not specified";
+        if (empty($package)) {
+            return 'API Package not specified';
         }
-        if (!($package == 'starter' || $package == 'basic' || $package == 'pro')){
-            return "Unknown API Package";
+        if (!($package == 'starter' || $package == 'basic' || $package == 'pro')) {
+            return 'Unknown API Package';
         }
-        return "";
+
+        return '';
     }
 }
