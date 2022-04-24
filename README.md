@@ -30,7 +30,8 @@ Package Laravel atau Lumen yang menyimpan data provinsi, kota, kecamatan, dan ne
 composer require dipantry/rajaongkir
 ```
 
-## Daftarkan Service Provider dan Facade untuk Lumen
+## Integrasi
+### Lumen
 Dalam file `bootstrap/app.php`, uncomment baris berikut
 ```php
 $app->withFacades();
@@ -44,6 +45,21 @@ $app->register(Dipantry\Rajaongkir\ServiceProvider::class);
 class_alias(Dipantry\Rajaongkir\Facade::class, 'Rajaongkir');
 ```
 
+### Laravel
+Dalam file `config/app.php`, masukkan baris berikut pada bagian `providers`
+```php
+'providers' => [
+    ...
+    Dipantry\Rajaongkir\ServiceProvider::class,
+],
+```
+dan tambahkan baris berikut pada bagian `aliases`
+```php
+'aliases' => [
+    'Rajaongkir' => Dipantry\Rajaongkir\Facade::class,
+],
+```
+
 ## Konfigurasi
 ```sh
 php artisan vendor:publish --provider="Dipantry\Rajaongkir\ServiceProvider"
@@ -54,7 +70,8 @@ File konfigurasi terletak pada `config/rajaongkir.php`
 return [
     'api_key' => 'Masukkan API Key Anda',
     'package' => 'Masukkan Tipe Akun Anda (Basic, Starter, Pro)',
-    'table_prefix' => 'Untuk migrasi dan seeding data'
+    'table_prefix' => 'Untuk migrasi dan seeding data',
+    'timeout' => 'Waktu timeout untuk API RajaOngkir',
 ]
 ```
 
