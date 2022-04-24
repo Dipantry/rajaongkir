@@ -5,14 +5,13 @@ namespace Dipantry\Rajaongkir\Tests\Http\Pro;
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\Rajaongkir;
 use Dipantry\Rajaongkir\Tests\TestCase;
-use Dipantry\Rajaongkir\Tests\TestingConfigData;
 
 class LocalCostTest extends TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
-        TestingConfigData::loadProAPI();
+        $this->loadProApi();
     }
 
     public function testGetCostSuccess()

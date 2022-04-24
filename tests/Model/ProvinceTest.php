@@ -6,7 +6,6 @@ use Dipantry\Rajaongkir\Models\ROCity;
 use Dipantry\Rajaongkir\Models\ROProvince;
 use Dipantry\Rajaongkir\Models\ROSubDistrict;
 use Dipantry\Rajaongkir\Tests\TestCase;
-use Dipantry\Rajaongkir\Tests\TestingConfigData;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProvinceTest extends TestCase
@@ -14,7 +13,7 @@ class ProvinceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        TestingConfigData::loadProAPI();
+        $this->loadProApi();
     }
 
     public function testProvinceHasManyCities(){

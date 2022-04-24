@@ -5,14 +5,13 @@ namespace Dipantry\Rajaongkir\Tests\Model;
 use Dipantry\Rajaongkir\Models\ROCity;
 use Dipantry\Rajaongkir\Models\ROSubDistrict;
 use Dipantry\Rajaongkir\Tests\TestCase;
-use Dipantry\Rajaongkir\Tests\TestingConfigData;
 
 class SubDistrictTest extends TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
-        TestingConfigData::loadProAPI();
+        $this->loadProApi();
     }
 
     public function testSubDistrictHasCity()

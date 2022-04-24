@@ -4,6 +4,7 @@ namespace Dipantry\Rajaongkir\Tests;
 
 use Dipantry\Rajaongkir\Facade;
 use Dipantry\Rajaongkir\ServiceProvider;
+use Illuminate\Support\Facades\Config;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -41,5 +42,28 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'prefix'   => 'rajaongkir_',
         ]);
         $app['config']->set('indonesia.table_prefix', 'rajaongkir_');
+    }
+
+    protected function loadStarterApi(): void
+    {
+        Config::set('rajaongkir.package', 'starter');
+        Config::set('rajaongkir.api_key', $this->loadTestingApis('starter'));
+    }
+
+    protected function loadProApi(): void
+    {
+        Config::set('rajaongkir.package', 'pro');
+        Config::set('rajaongkir.api_key', $this->loadTestingApis('pro'));
+    }
+
+    private function loadTestingApis(string $type) : string
+    {
+        return openssl_decrypt(
+            $type == 'pro' ? config('rajaongkir_testing.pro') : config('rajaongkir_testing.starter'),
+            "AES-128-CTR",
+            config('rajaongkir_testing.enc_key'),
+            0,
+            config('rajaongkir_testing.enc_iv')
+        );
     }
 }

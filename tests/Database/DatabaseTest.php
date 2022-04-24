@@ -6,13 +6,11 @@ use Dipantry\Rajaongkir\Models\ROCity;
 use Dipantry\Rajaongkir\Models\ROCountry;
 use Dipantry\Rajaongkir\Models\ROSubDistrict;
 use Dipantry\Rajaongkir\Tests\TestCase;
-use Dipantry\Rajaongkir\Tests\TestingConfigData;
-use Illuminate\Support\Facades\Config;
 
 class DatabaseTest extends TestCase
 {
     public function testStarterDatabaseSeed(){
-        TestingConfigData::loadStarterAPI();
+        $this->loadStarterApi();
         $this->artisan('rajaongkir:seed');
 
         $cities = ROCity::all();
@@ -46,8 +44,7 @@ class DatabaseTest extends TestCase
 //    }
 
     public function testProDatabaseSeed(){
-        TestingConfigData::loadProAPI();
-        Config::set('rajaongkir.package', 'pro');
+        $this->loadProApi();
         $this->artisan('rajaongkir:seed');
 
         $cities = ROCity::all();

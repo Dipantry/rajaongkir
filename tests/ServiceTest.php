@@ -12,7 +12,7 @@ class ServiceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        TestingConfigData::loadProAPI();
+        $this->loadProApi();
     }
 
     public function testGetLocalOngkirCost()
