@@ -9,7 +9,8 @@ use Dipantry\Rajaongkir\Tests\TestCase;
 
 class DatabaseTest extends TestCase
 {
-    public function testStarterDatabaseSeed(){
+    public function testStarterDatabaseSeed()
+    {
         $this->loadStarterApi();
         $this->artisan('rajaongkir:seed');
 
@@ -43,7 +44,8 @@ class DatabaseTest extends TestCase
 //        $this->assertNotEmpty($countries);
 //    }
 
-    public function testProDatabaseSeed(){
+    public function testProDatabaseSeed()
+    {
         $this->loadProApi();
         $this->artisan('rajaongkir:seed');
 

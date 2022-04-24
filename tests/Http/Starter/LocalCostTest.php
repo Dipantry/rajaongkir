@@ -27,6 +27,7 @@ class LocalCostTest extends TestCase
     public function testGetCostOtherCourier()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
                 ->getOngkirCost(1, 500, 300, RajaongkirCourier::LION_PARCEL);
@@ -40,9 +41,10 @@ class LocalCostTest extends TestCase
     public function testGetCostUnknownCourier()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
-                ->getOngkirCost(1, 500, 300, "Lorem Ipsum");
+                ->getOngkirCost(1, 500, 300, 'Lorem Ipsum');
         } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
@@ -53,6 +55,7 @@ class LocalCostTest extends TestCase
     public function testGetCostUnknownOrigin()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
                 ->getOngkirCost(999, 500, 300, RajaongkirCourier::JNE);
@@ -66,6 +69,7 @@ class LocalCostTest extends TestCase
     public function testGetCostUnknownDestination()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
                 ->getOngkirCost(1, 999, 300, RajaongkirCourier::JNE);

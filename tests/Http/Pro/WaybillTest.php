@@ -20,16 +20,17 @@ class WaybillTest extends TestCase
     public function testWaybillSuccess()
     {
         $response = (new RajaongkirService())
-            ->getWaybill("003013007979", RajaongkirCourier::SICEPAT);
+            ->getWaybill('003013007979', RajaongkirCourier::SICEPAT);
         $this->assertNotEmpty($response);
     }
 
     public function testWaybillWrongData()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
-                ->getWaybill("SOCAG00183235715", RajaongkirCourier::JNE);
+                ->getWaybill('SOCAG00183235715', RajaongkirCourier::JNE);
         } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());

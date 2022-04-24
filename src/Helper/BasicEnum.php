@@ -21,6 +21,7 @@ abstract class BasicEnum
             $reflect = new ReflectionClass($calledClass);
             self::$constCacheArray[$calledClass] = $reflect->getConstants();
         }
+
         return self::$constCacheArray[$calledClass];
     }
 
@@ -28,6 +29,7 @@ abstract class BasicEnum
     public static function isValidValue($value, $strict = true): bool
     {
         $values = array_values(self::getConstants());
+
         return in_array($value, $values, $strict);
     }
 }

@@ -26,7 +26,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         ];
     }
 
-    #[ArrayShape(['Rajaongkir' => "string"])]
+    #[ArrayShape(['Rajaongkir' => 'string'])]
     public function getPackageAliases($app): array
     {
         return [
@@ -57,11 +57,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
         Config::set('rajaongkir.api_key', $this->loadTestingApis('pro'));
     }
 
-    private function loadTestingApis(string $type) : string
+    private function loadTestingApis(string $type): string
     {
         return openssl_decrypt(
             $type == 'pro' ? config('rajaongkir_testing.pro') : config('rajaongkir_testing.starter'),
-            "AES-128-CTR",
+            'AES-128-CTR',
             config('rajaongkir_testing.enc_key'),
             0,
             config('rajaongkir_testing.enc_iv')
