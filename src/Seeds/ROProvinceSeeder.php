@@ -11,12 +11,12 @@ class ROProvinceSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = config('rajaongkir.table_prefix').'provinces';
-        $this->filename = dirname(__FILE__, 3) . '/resources/csv/province.csv';
+        $this->filename = dirname(__FILE__, 3).'/resources/csv/province.csv';
         $this->csv_delimiter = ',';
         $this->offset_rows = 1;
         $this->mapping = [
             0 => 'id',
-            1 => 'name'
+            1 => 'name',
         ];
     }
 
@@ -27,7 +27,7 @@ class ROProvinceSeeder extends CsvSeeder
      */
     public function run(): void
     {
-        if (!SystemSecurity::allowProvinceSeeding()){
+        if (!SystemSecurity::allowProvinceSeeding()) {
             return;
         }
 

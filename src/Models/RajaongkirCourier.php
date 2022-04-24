@@ -1,4 +1,6 @@
-<?php /** @noinspection SpellCheckingInspection */
+<?php
+
+/** @noinspection SpellCheckingInspection */
 
 namespace Dipantry\Rajaongkir\Models;
 
@@ -10,74 +12,74 @@ abstract class RajaongkirCourier extends BasicEnum
     const POS_INDONESIA = 'pos';
 
     /** Lion Parcel */
-    const LION_PARCEL = "lion";
+    const LION_PARCEL = 'lion';
 
     /** Ninja Xpress */
-    const NINJA_XPRESS = "ninja";
+    const NINJA_XPRESS = 'ninja';
 
     /** ID Express */
-    const ID_EXPRESS = "ide";
+    const ID_EXPRESS = 'ide';
 
     /** SiCepat Express */
-    const SICEPAT = "sicepat";
+    const SICEPAT = 'sicepat';
 
     /** SAP Express */
-    const SAP_EXPRESS = "sap";
+    const SAP_EXPRESS = 'sap';
 
     /** Nusantara Card Semesta */
-    const NCS = "ncs";
+    const NCS = 'ncs';
 
     /** AnterAja */
-    const ANTERAJA = "anteraja";
+    const ANTERAJA = 'anteraja';
 
     /** Royal Express Indonesia */
-    const REX = "rex";
+    const REX = 'rex';
 
     /** Sentral Cargo */
-    const SENTRAL = "sentral";
+    const SENTRAL = 'sentral';
 
     /** Jalur Nugraha Ekakurir */
-    const JNE = "jne";
+    const JNE = 'jne';
 
     /** Citra Van Titipan Kilat */
-    const TIKI = "tiki";
+    const TIKI = 'tiki';
 
     /** RPX Holding */
-    const RPX = "rpx";
+    const RPX = 'rpx';
 
     /** Pandu Logistics */
-    const PANDU = "pandu";
+    const PANDU = 'pandu';
 
     /** Wahana Prestasi Logistik */
-    const WAHANA = "wahana";
+    const WAHANA = 'wahana';
 
     /** J&T Express */
-    const JNT = "j&t";
+    const JNT = 'j&t';
 
     /** Pahala Kencana Express */
-    const PAHALA = "pahala";
+    const PAHALA = 'pahala';
 
     /** JET Express */
-    const JET = "jet";
+    const JET = 'jet';
 
     /** Solusi Ekspres */
-    const SOLUSI = "slis";
+    const SOLUSI = 'slis';
 
     /** Expedito */
-    const EXPEDITO = "expedito";
+    const EXPEDITO = 'expedito';
 
     /** 21 Express */
-    const EXPRESS_21 = "dse";
+    const EXPRESS_21 = 'dse';
 
     /** First Logistics */
-    const FIRST = "first";
+    const FIRST = 'first';
 
     /** Star Cargo */
-    const STAR = "star";
+    const STAR = 'star';
 
     /** IDL Cargo */
-    const IDL = "idl";
+    const IDL = 'idl';
 
     /** Indah Logistics */
-    const INDAH = "indah";
+    const INDAH = 'indah';
 }

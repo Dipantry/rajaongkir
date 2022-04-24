@@ -10,7 +10,7 @@ class ServiceProvider extends BaseServiceProvider
 {
     public function register()
     {
-        $this->app->bind('rajaongkir', function (){
+        $this->app->bind('rajaongkir', function () {
             return new RajaongkirService();
         });
 
@@ -22,11 +22,12 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/rajaongkir.php', 'rajaongkir',
+            __DIR__.'/../config/rajaongkir.php',
+            'rajaongkir',
         );
 
         $databasePath = __DIR__.'/../database/migrations';
-        if ($this->isLumen()){
+        if ($this->isLumen()) {
             $this->loadMigrationsFrom($databasePath);
         } else {
             $this->publishes(
@@ -35,7 +36,7 @@ class ServiceProvider extends BaseServiceProvider
             );
         }
 
-        if (class_exists(Application::class)){
+        if (class_exists(Application::class)) {
             $this->publishes([
                 __DIR__.'/../config/rajaongkir.php' => config_path('rajaongkir.php'),
             ], 'config');

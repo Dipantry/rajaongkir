@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUndefinedClassInspection */
+<?php
+
+/** @noinspection PhpUndefinedClassInspection */
 
 namespace Dipantry\Rajaongkir\Tests;
 
@@ -36,7 +38,7 @@ class ServiceTest extends TestCase
 
     public function testGetWaybill()
     {
-        $result = Rajaongkir::getWaybill("003013007979", RajaongkirCourier::SICEPAT);
+        $result = Rajaongkir::getWaybill('003013007979', RajaongkirCourier::SICEPAT);
         $this->assertNotEmpty($result);
     }
 }

@@ -17,6 +17,7 @@ class CurrencyTest extends TestCase
     public function testGetCurrency()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
                 ->getCurrency();

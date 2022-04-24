@@ -11,7 +11,9 @@ use ReflectionException;
 
 class BaseRajaongkir
 {
-    protected string $apiKey, $package, $baseUrl;
+    protected string $apiKey;
+    protected string $package;
+    protected string $baseUrl;
     protected PackagePolicy $policy;
 
     protected string $starterBaseUrl = 'https://api.rajaongkir.com/starter';
@@ -21,13 +23,13 @@ class BaseRajaongkir
     /* @throws ApiResponseException */
     public function __construct()
     {
-        if (empty(config('rajaongkir.api_key'))){
-            throw new ApiResponseException("API Key not specified");
+        if (empty(config('rajaongkir.api_key'))) {
+            throw new ApiResponseException('API Key not specified');
         } else {
             $this->apiKey = config('rajaongkir.api_key');
         }
 
-        if (empty($this->checkPackage())){
+        if (empty($this->checkPackage())) {
             $this->package = config('rajaongkir.package');
         } else {
             throw new ApiResponseException($this->checkPackage());
@@ -35,7 +37,7 @@ class BaseRajaongkir
 
         $this->baseUrl = match ($this->package) {
             'basic' => $this->basicBaseUrl,
-            'pro' => $this->proBaseUrl,
+            'pro'   => $this->proBaseUrl,
             default => $this->starterBaseUrl,
         };
 
@@ -46,8 +48,8 @@ class BaseRajaongkir
     public function getHttp($url, $params = [], bool $manyResults = true)
     {
         $response = Http::withHeaders([
-            'key' => $this->apiKey
-        ])->get($this->baseUrl . $url, $params);
+            'key' => $this->apiKey,
+        ])->get($this->baseUrl.$url, $params);
 
         try {
             $result = $response['rajaongkir'][$manyResults ? 'results' : 'result'];
@@ -57,6 +59,7 @@ class BaseRajaongkir
                 code: $response['rajaongkir']['status']['code'] ?? 500
             );
         }
+
         return $result;
     }
 
@@ -64,8 +67,8 @@ class BaseRajaongkir
     public function postHttp($url, $body = [], bool $manyResults = true)
     {
         $response = Http::withHeaders([
-            'key' => $this->apiKey
-        ])->post($this->baseUrl . $url, $body);
+            'key' => $this->apiKey,
+        ])->post($this->baseUrl.$url, $body);
 
         try {
             $result = $response['rajaongkir'][$manyResults ? 'results' : 'result'];
@@ -75,6 +78,7 @@ class BaseRajaongkir
                 code: $response['rajaongkir']['status']['code'] ?? 500
             );
         }
+
         return $result;
     }
 
@@ -91,12 +95,13 @@ class BaseRajaongkir
     {
         $package = config('rajaongkir.package');
 
-        if (empty($package)){
-            return "API Package not specified";
+        if (empty($package)) {
+            return 'API Package not specified';
         }
-        if (!($package == 'starter' || $package == 'basic' || $package == 'pro')){
-            return "Unknown API Package";
+        if (!($package == 'starter' || $package == 'basic' || $package == 'pro')) {
+            return 'Unknown API Package';
         }
-        return "";
+
+        return '';
     }
 }

@@ -25,9 +25,10 @@ class InternationalCostTest extends TestCase
     public function testGetInternationalCostUnknownCourier()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
-                ->getInternationalOngkirCost(1, 200, 300, "U");
+                ->getInternationalOngkirCost(1, 200, 300, 'U');
         } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());

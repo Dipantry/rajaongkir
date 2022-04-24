@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
- * @property int $id
+ * @property int    $id
  * @property string $name
  */
 class ROProvince extends Model

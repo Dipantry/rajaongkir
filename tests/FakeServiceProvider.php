@@ -11,7 +11,7 @@ class FakeServiceProvider extends BaseServiceProvider
 {
     public function register()
     {
-        $this->app->bind('rajaongkir', function (){
+        $this->app->bind('rajaongkir', function () {
             return new RajaongkirService();
         });
 
@@ -23,14 +23,16 @@ class FakeServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/rajaongkir.php', 'rajaongkir',
+            __DIR__.'/../config/rajaongkir.php',
+            'rajaongkir',
         );
         $this->mergeConfigFrom(
-            __DIR__.'/../config/rajaongkir_testing.php', 'rajaongkir_testing',
+            __DIR__.'/../config/rajaongkir_testing.php',
+            'rajaongkir_testing',
         );
 
         $databasePath = __DIR__.'/../database/migrations';
-        if ($this->isLumen()){
+        if ($this->isLumen()) {
             $this->loadMigrationsFrom($databasePath);
         } else {
             $this->publishes(
@@ -39,7 +41,7 @@ class FakeServiceProvider extends BaseServiceProvider
             );
         }
 
-        if (class_exists(Application::class)){
+        if (class_exists(Application::class)) {
             $this->publishes([
                 __DIR__.'/../config/rajaongkir.php' => config_path('rajaongkir.php'),
             ], 'config');

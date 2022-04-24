@@ -18,9 +18,9 @@ class ApiResponseExceptionTest extends TestCase
 
         try {
             (new RajaongkirService())->getOngkirCost(1, 99, 300, RajaongkirCourier::JNE);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $this->assertInstanceOf(ApiResponseException::class, $e);
-            $this->assertEquals("API Key not specified", $e->getMessage());
+            $this->assertEquals('API Key not specified', $e->getMessage());
         }
     }
 
@@ -33,7 +33,7 @@ class ApiResponseExceptionTest extends TestCase
             (new RajaongkirService())->getOngkirCost(1, 99, 300, RajaongkirCourier::JNE);
         } catch (Exception $e) {
             $this->assertInstanceOf(ApiResponseException::class, $e);
-            $this->assertEquals("API Package not specified", $e->getMessage());
+            $this->assertEquals('API Package not specified', $e->getMessage());
         }
     }
 
@@ -46,7 +46,7 @@ class ApiResponseExceptionTest extends TestCase
             (new RajaongkirService())->getOngkirCost(1, 99, 300, RajaongkirCourier::JNE);
         } catch (Exception $e) {
             $this->assertInstanceOf(ApiResponseException::class, $e);
-            $this->assertEquals("Unknown API Package", $e->getMessage());
+            $this->assertEquals('Unknown API Package', $e->getMessage());
         }
     }
 }
