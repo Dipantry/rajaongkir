@@ -18,10 +18,20 @@ class BaseRajaongkir
     protected string $basicBaseUrl = 'https://api.rajaongkir.com/basic';
     protected string $proBaseUrl = 'https://pro.rajaongkir.com/api';
 
+    /* @throws ApiResponseException */
     public function __construct()
     {
-        $this->apiKey = config('rajaongkir.api_key');
-        $this->package = config('rajaongkir.package');
+        if (empty(config('rajaongkir.api_key'))){
+            throw new ApiResponseException("API Key not specified");
+        } else {
+            $this->apiKey = config('rajaongkir.api_key');
+        }
+
+        if (empty($this->checkPackage())){
+            $this->package = config('rajaongkir.package');
+        } else {
+            throw new ApiResponseException($this->checkPackage());
+        }
 
         $this->baseUrl = match ($this->package) {
             'basic' => $this->basicBaseUrl,
@@ -75,5 +85,18 @@ class BaseRajaongkir
         } catch (ReflectionException $e) {
             return false;
         }
+    }
+
+    private function checkPackage(): string
+    {
+        $package = config('rajaongkir.package');
+
+        if (empty($package)){
+            return "API Package not specified";
+        }
+        if (!($package == 'starter' || $package == 'basic' || $package == 'pro')){
+            return "Unknown API Package";
+        }
+        return "";
     }
 }
