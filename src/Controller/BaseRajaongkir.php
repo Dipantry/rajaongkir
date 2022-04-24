@@ -54,7 +54,7 @@ class BaseRajaongkir
             $response = Http::withHeaders([
                 'key' => $this->apiKey,
             ])->timeout($this->timeout)->get($this->baseUrl.$url, $params);
-        } catch (Exception){
+        } catch (Exception) {
             throw new ApiResponseException('Connection Timed Out');
         }
 
@@ -77,7 +77,7 @@ class BaseRajaongkir
             $response = Http::withHeaders([
                 'key' => $this->apiKey,
             ])->timeout($this->timeout)->post($this->baseUrl.$url, $body);
-        } catch (Exception){
+        } catch (Exception) {
             throw new ApiResponseException('Connection Timed Out');
         }
 
