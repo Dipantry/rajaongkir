@@ -11,8 +11,8 @@ Package Laravel atau Lumen yang menyimpan data provinsi, kota, kecamatan, dan ne
 - [x] Seeding data lokasi berdasarkan Api Key dan tipe akun yang terdaftar pada RajaOngkir
 - [x] Mengambil biaya pengiriman (ongkir) untuk pengiriman lokal
 - [x] Mengambil biaya pengiriman (ongkir) untuk pengiriman internasional
-- [ ] Mengambil nilai tukar rupiah terhadap US dollar
-- [ ] Mengambil atau melacak startus pengiriman berdasarkan nomor resi
+- [x] Mengambil nilai tukar rupiah terhadap US dollar
+- [x] Mengambil atau melacak startus pengiriman berdasarkan nomor resi
 - [x] Memasang exception khusus apabila terjadi kesalahan pada API RajaOngkir
 
 ### Support pada tipe akun
@@ -20,7 +20,7 @@ Package Laravel atau Lumen yang menyimpan data provinsi, kota, kecamatan, dan ne
 - [ ] Basic*
 - [x] Pro
 
-*Hingga package ini dibuat, akun basic sudah ditiadakan oleh RajaOngkir. (Informasi dari Raja Ongkir Support)
+*Hingga package ini dibuat, akun basic sudah ditiadakan oleh RajaOngkir. <br>(Informasi dari Raja Ongkir Support)
 
 ---
 # Instalasi
@@ -68,6 +68,7 @@ php artisan rajaongkir:seed
 
 ---
 # Cara menggunakan
+## Data Provinsi, Kota, Kecamatan, dan Negara
 Untuk mengambil data provinsi, kota, kecamatan, dan negara dapat menggunakan model yang sudah disediakan
 
 ```php
@@ -82,8 +83,69 @@ ROSubDistrict::all();
 ROCountry::all();
 ```
 
----
+## Biaya Pengiriman Lokal
+```php
+use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 
+\Rajaongkir::getOngkirCost(
+    int $origin, int $destination, int $weight, string $courier,
+    string $originType = 'city', string $destinationType = 'city',
+    int $length = null, int $width = null, int $height = null, int $diameter = null
+)
+
+// Contoh Starter
+\Rajaongkir::getOngkirCost(
+    $origin = 1, $destination = 200, $weight = 300, $courier = RajaongkirCourier::JNE
+);
+
+// Contoh Pro
+\Rajaongkir::getOngkirCost(
+    $origin = 1, $destination = 200, $weight = 300, $courier = RajaongkirCourier::JNE,
+    $originType = 'subdistrict', $destinationType = 'subdistrict'
+);
+```
+
+## Biaya Pengiriman Internasional
+```php
+use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+
+\Rajaongkir::getInternationalOngkirCost(
+    int $origin, int $destination, int $weight, string $courier,
+    int $length = null, int $width = null, int $height = null, int $diameter = null
+)
+
+// Contoh
+\Rajaongkir::getOngkirCost(
+    $origin = 1, $destination = 200, $weight = 300, $courier = RajaongkirCourier::JNE,
+    $length = 100, $width = 100, $height = 100, $diameter = 100
+);
+```
+
+## Nilai Tukar Rupiah
+```php
+\Rajaongkir::getCurrency()
+```
+
+## Melacak Status Pengiriman
+```php
+use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+
+\Rajaongkir::getWaybill(
+    string $waybill, string $courier
+);
+
+// Contoh
+\Rajaongkir::getWaybill(
+    $waybill = '123456789', $courier = RajaongkirCourier::JNE
+);
+```
+
+### Rajaongkir Courier
+Package ini menyediakan model `RajaongkirCourier` yang berisi data kurir yang terdaftar pada RajaOngkir. Model tersebut mengembalikan kode kurir untuk dikirimkan ke server RajaOngkir. <br> 
+*Disarankan untuk menggunakan model untuk mencegah kesalahan penulisan kode kurir.
+
+### Response
+Setiap method yang digunakan (kecuali models) mengembalikan response berupa array atau object bergantung pada isi `result` atau `results` yang diterima.
 
 ### Exception
 Setiap kali sistem melakukan request ke API Raja Ongkir, jika terjadi kesalahan, maka sistem akan mengembalikan `APIResponseException` dengan pesan kesalahan yang diberikan oleh Raja Ongkir. Jika request berhasil, maka sistem akan mengembalikan hasil request yang diberikan oleh Raja Ongkir.
