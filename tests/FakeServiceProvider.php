@@ -1,12 +1,13 @@
 <?php
 
-namespace Dipantry\Rajaongkir;
+namespace Dipantry\Rajaongkir\Tests;
 
 use Dipantry\Rajaongkir\Commands\SeedCommand;
+use Dipantry\Rajaongkir\RajaongkirService;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-class ServiceProvider extends BaseServiceProvider
+class FakeServiceProvider extends BaseServiceProvider
 {
     public function register()
     {
@@ -23,6 +24,9 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/rajaongkir.php', 'rajaongkir',
+        );
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/rajaongkir_testing.php', 'rajaongkir_testing',
         );
 
         $databasePath = __DIR__.'/../database/migrations';

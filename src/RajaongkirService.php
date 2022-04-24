@@ -5,7 +5,7 @@ namespace Dipantry\Rajaongkir;
 use Dipantry\Rajaongkir\Controller\BaseRajaongkir;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
 
-class Rajaongkir extends BaseRajaongkir
+class RajaongkirService extends BaseRajaongkir
 {
     /* @throws ApiResponseException */
     public function getOngkirCost(
@@ -81,4 +81,6 @@ class Rajaongkir extends BaseRajaongkir
 
         return $this->postHttp('/v2/internationalCost', $body);
     }
+
+    
 }

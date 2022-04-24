@@ -3,7 +3,7 @@
 namespace Dipantry\Rajaongkir\Tests\Http\Starter;
 
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
-use Dipantry\Rajaongkir\Rajaongkir;
+use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
 
 class LocalCostTest extends TestCase
@@ -16,7 +16,7 @@ class LocalCostTest extends TestCase
 
     public function testGetCostSuccess()
     {
-        $response = (new Rajaongkir())
+        $response = (new RajaongkirService())
             ->getOngkirCost(1, 500, 300, RajaongkirCourier::JNE);
         $this->assertNotEmpty($response);
     }
@@ -25,7 +25,7 @@ class LocalCostTest extends TestCase
     {
         $response = null;
         try {
-            $response = (new Rajaongkir())
+            $response = (new RajaongkirService())
                 ->getOngkirCost(1, 500, 300, RajaongkirCourier::LION_PARCEL);
         } catch (\Exception $e) {
             $this->assertEquals(400, $e->getCode());
@@ -38,7 +38,7 @@ class LocalCostTest extends TestCase
     {
         $response = null;
         try {
-            $response = (new Rajaongkir())
+            $response = (new RajaongkirService())
                 ->getOngkirCost(1, 500, 300, "Lorem Ipsum");
         } catch (\Exception $e) {
             $this->assertEquals(400, $e->getCode());
@@ -51,7 +51,7 @@ class LocalCostTest extends TestCase
     {
         $response = null;
         try {
-            $response = (new Rajaongkir())
+            $response = (new RajaongkirService())
                 ->getOngkirCost(999, 500, 300, RajaongkirCourier::JNE);
         } catch (\Exception $e) {
             $this->assertEquals(500, $e->getCode());
@@ -64,7 +64,7 @@ class LocalCostTest extends TestCase
     {
         $response = null;
         try {
-            $response = (new Rajaongkir())
+            $response = (new RajaongkirService())
                 ->getOngkirCost(1, 999, 300, RajaongkirCourier::JNE);
         } catch (\Exception $e) {
             $this->assertEquals(500, $e->getCode());

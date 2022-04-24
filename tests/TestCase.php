@@ -3,8 +3,8 @@
 namespace Dipantry\Rajaongkir\Tests;
 
 use Dipantry\Rajaongkir\Facade;
-use Dipantry\Rajaongkir\ServiceProvider;
 use Illuminate\Support\Facades\Config;
+use JetBrains\PhpStorm\ArrayShape;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -22,11 +22,12 @@ class TestCase extends \Orchestra\Testbench\TestCase
     public function getPackageProviders($app): array
     {
         return [
-            ServiceProvider::class,
+            FakeServiceProvider::class,
         ];
     }
 
-    public function getPackageAliases($app)
+    #[ArrayShape(['Rajaongkir' => "string"])]
+    public function getPackageAliases($app): array
     {
         return [
             'Rajaongkir' => Facade::class,

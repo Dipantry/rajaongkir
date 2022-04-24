@@ -3,7 +3,7 @@
 namespace Dipantry\Rajaongkir\Tests\Http\Pro;
 
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
-use Dipantry\Rajaongkir\Rajaongkir;
+use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
 
 class LocalCostTest extends TestCase
@@ -16,14 +16,14 @@ class LocalCostTest extends TestCase
 
     public function testGetCostSuccess()
     {
-        $response = (new Rajaongkir())
+        $response = (new RajaongkirService())
             ->getOngkirCost(1, 500, 300, RajaongkirCourier::JNE);
         $this->assertNotEmpty($response);
     }
 
     public function testGetCostSubDistrictSuccess()
     {
-        $response = (new Rajaongkir())
+        $response = (new RajaongkirService())
             ->getOngkirCost(1, 500, 300, RajaongkirCourier::JNE,
                 'subdistrict', 'subdistrict');
         $this->assertNotEmpty($response);
@@ -31,7 +31,7 @@ class LocalCostTest extends TestCase
 
     public function testCostOtherCourier()
     {
-        $response = (new Rajaongkir())
+        $response = (new RajaongkirService())
             ->getOngkirCost(1, 500, 300, RajaongkirCourier::LION_PARCEL);
         $this->assertNotEmpty($response);
     }
@@ -40,7 +40,7 @@ class LocalCostTest extends TestCase
     {
         $response = null;
         try {
-            $response = (new Rajaongkir())
+            $response = (new RajaongkirService())
                 ->getOngkirCost(1, 500, 300, "Lorem Ipsum");
         } catch (\Exception $e) {
             $this->assertEquals(400, $e->getCode());
@@ -51,14 +51,14 @@ class LocalCostTest extends TestCase
 
     public function testGetCostUnknownOrigin()
     {
-        $response = (new Rajaongkir())
+        $response = (new RajaongkirService())
             ->getOngkirCost(999, 500, 300, RajaongkirCourier::LION_PARCEL);
         $this->assertNotEmpty($response);
     }
 
     public function testGetCostUnknownDestination()
     {
-        $response = (new Rajaongkir())
+        $response = (new RajaongkirService())
             ->getOngkirCost(1, 999, 300, RajaongkirCourier::LION_PARCEL);
         $this->assertNotEmpty($response);
     }

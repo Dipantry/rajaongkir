@@ -14,7 +14,8 @@ class CountryTest  extends TestCase
         $this->loadProApi();
     }
 
-    public function testCountries(){
+    public function testCountries()
+    {
         $this->seed($this->countrySeeder);
 
         $countries = ROCountry::all();
@@ -23,7 +24,8 @@ class CountryTest  extends TestCase
         $this->assertInstanceOf(ROCountry::class, $countries->first());
     }
 
-    public function testCountryHasAttribute(){
+    public function testCountryHasAttribute()
+    {
         $this->seed($this->countrySeeder);
 
         $country = ROCountry::first();

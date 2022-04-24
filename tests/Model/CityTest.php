@@ -16,7 +16,8 @@ class CityTest extends TestCase
         $this->loadProApi();
     }
 
-    public function testCityHasManySubDistricts(){
+    public function testCityHasManySubDistricts()
+    {
         $this->seed($this->citySeeder);
         $this->seed($this->subDistrictSeeder);
 
@@ -26,7 +27,8 @@ class CityTest extends TestCase
         $this->assertInstanceOf(ROSubDistrict::class, $city->subDistricts->first());
     }
 
-    public function testCityHasProvince(){
+    public function testCityHasProvince()
+    {
         $this->seed($this->provinceSeeder);
         $this->seed($this->citySeeder);
 
@@ -36,7 +38,8 @@ class CityTest extends TestCase
         $this->assertEquals($city->province_id, $city->province->id);
     }
 
-    public function testCityHasAttributes(){
+    public function testCityHasAttributes()
+    {
         $this->seed($this->citySeeder);
 
         $city = ROCity::first();
