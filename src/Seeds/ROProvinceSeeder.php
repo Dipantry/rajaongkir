@@ -11,7 +11,7 @@ class ROProvinceSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = config('rajaongkir.table_prefix').'provinces';
-        $this->filename = dirname(__FILE__, 2) . '../../resources/csv/province.csv';
+        $this->filename = dirname(__FILE__, 3) . '/resources/csv/province.csv';
         $this->csv_delimiter = ',';
         $this->offset_rows = 1;
         $this->mapping = [
