@@ -33,14 +33,14 @@ class BaseRajaongkir
     }
 
     /* @throws ApiResponseException */
-    public function getHttp($url, $params = [])
+    public function getHttp($url, $params = [], bool $manyResults = true)
     {
         $response = Http::withHeaders([
             'key' => $this->apiKey
         ])->get($this->baseUrl . $url, $params);
 
         try {
-            $result = $response['rajaongkir']['results'];
+            $result = $response['rajaongkir'][$manyResults ? 'results' : 'result'];
         } catch (Exception $e) {
             throw new ApiResponseException(
                 message: $response['rajaongkir']['status']['description'] ?? 'Unknown Error',
@@ -51,14 +51,14 @@ class BaseRajaongkir
     }
 
     /* @throws ApiResponseException */
-    public function postHttp($url, $body = [])
+    public function postHttp($url, $body = [], bool $manyResults = true)
     {
         $response = Http::withHeaders([
             'key' => $this->apiKey
         ])->post($this->baseUrl . $url, $body);
 
         try {
-            $result = $response['rajaongkir']['results'];
+            $result = $response['rajaongkir'][$manyResults ? 'results' : 'result'];
         } catch (Exception $e) {
             throw new ApiResponseException(
                 message: $response['rajaongkir']['status']['description'] ?? 'Unknown Error',
@@ -68,7 +68,7 @@ class BaseRajaongkir
         return $result;
     }
 
-    public function checkCourierCode(string $courierCode): bool
+    protected function checkCourierCode(string $courierCode): bool
     {
         try {
             return RajaongkirCourier::isValidValue($courierCode);

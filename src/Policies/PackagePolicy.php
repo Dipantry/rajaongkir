@@ -2,6 +2,8 @@
 
 namespace Dipantry\Rajaongkir\Policies;
 
+use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+
 class PackagePolicy
 {
     private string $package;
@@ -67,7 +69,7 @@ class PackagePolicy
     public function allowGetWaybill(string $courierCode): bool
     {
         if ($this->package == 'basic'){
-            return $courierCode == 'jne';
+            return $courierCode == RajaongkirCourier::JNE;
         }
         return $this->package == 'pro';
     }

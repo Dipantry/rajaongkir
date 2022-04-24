@@ -82,5 +82,29 @@ class RajaongkirService extends BaseRajaongkir
         return $this->postHttp('/v2/internationalCost', $body);
     }
 
-    
+    /* @throws ApiResponseException */
+    public function getCurrency()
+    {
+        if (!$this->policy->allowGetCurrencies()){
+            throw new ApiResponseException('You can\'t get currencies', 400);
+        }
+
+        return $this->getHttp('/currency', [], false);
+    }
+
+    /* @throws ApiResponseException */
+    public function getWaybill(
+        string $waybill, string $courier
+    ){
+        if (!$this->policy->allowGetWaybill($courier)){
+            throw new ApiResponseException('You can\'t get waybills', 400);
+        }
+
+        $body = [
+            'waybill' => $waybill,
+            'courier' => $courier
+        ];
+
+        return $this->postHttp('/waybill', $body, false);
+    }
 }
