@@ -19,4 +19,6 @@ class URLs
     public static string $internationalCost = '/v2/internationalCost';
 
     public static string $currency = '/currency';
+
+    public static string $waybill = '/waybill';
 }

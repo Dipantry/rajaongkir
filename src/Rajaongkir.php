@@ -180,4 +180,20 @@ class Rajaongkir extends BaseVanillaRajaongkir
 
         return $this->getHttp(URLs::$currency, manyResults: false);
     }
+
+    /* @throws ApiResponseException */
+    public function getWaybill(
+        string $waybill,
+        string $courier
+    ){
+        if (!$this->policy->allowGetWaybill($courier))
+            throw new ApiResponseException('You can\'t get waybill', 400);
+
+        $body = [
+            'waybill' => $waybill,
+            'courier' => $courier,
+        ];
+
+        return $this->postHttp(URLs::$waybill, $body, false);
+    }
 }
