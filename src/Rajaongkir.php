@@ -140,4 +140,13 @@ class Rajaongkir extends BaseVanillaRajaongkir
 
         return $this->postHttp(URLs::$internationalCost, $body);
     }
+
+    /* @throws ApiResponseException */
+    public function getCurrency()
+    {
+        if (!$this->policy->allowGetCurrencies())
+            throw new ApiResponseException('You can\'t get currency', 400);
+
+        return $this->getHttp(URLs::$currency, manyResults: false);
+    }
 }

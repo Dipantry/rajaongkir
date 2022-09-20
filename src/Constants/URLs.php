@@ -14,4 +14,6 @@ class URLs
 
     public static string $localCost = '/cost';
     public static string $internationalCost = '/v2/internationalCost';
+
+    public static string $currency = '/currency';
 }
