@@ -1,9 +1,10 @@
 <?php
 
-namespace Dipantry\Rajaongkir\Tests\Vanilla\Pro;
+namespace Dipantry\Rajaongkir\Tests\Vanilla\Starter;
 
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
 use Dipantry\Rajaongkir\Tests\VanillaTestCase;
+use Exception;
 
 class LocationTest extends VanillaTestCase
 {
@@ -11,7 +12,7 @@ class LocationTest extends VanillaTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->loadProApi();
+        $this->loadStarterApi();
     }
 
     /** @throws ApiResponseException */
@@ -85,29 +86,15 @@ class LocationTest extends VanillaTestCase
         $this->assertEmpty($response);
     }
 
-    /** @throws ApiResponseException */
     public function testGetSubDistrict()
     {
-        $response = $this->rajaongkir->getSubDistrict(1);
-        $this->assertNotEmpty($response);
-        $this->assertSame(sizeof($response), 12);
-
-        $this->assertSame($response[0]['subdistrict_name'], 'Arongan Lambalek');
-    }
-
-    /** @throws ApiResponseException */
-    public function testGetSubDistrictWithId()
-    {
-        $response = $this->rajaongkir->getSubDistrict(1, 2);
-        $this->assertNotEmpty($response);
-
-        $this->assertSame($response['subdistrict_name'], 'Bubon');
-    }
-
-    /** @throws ApiResponseException */
-    public function testGetSubDistrictFailed()
-    {
-        $response = $this->rajaongkir->getSubDistrict(1000, 1000);
+        $response = null;
+        try {
+            $response = $this->rajaongkir->getSubDistrict(1);
+        } catch (Exception $e){
+            $this->assertEquals(400, $e->getCode());
+            $this->assertNotEmpty($e->getMessage());
+        }
         $this->assertEmpty($response);
     }
 }
