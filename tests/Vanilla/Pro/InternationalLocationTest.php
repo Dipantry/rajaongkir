@@ -21,12 +21,12 @@ class InternationalLocationTest extends VanillaTestCase
             $response = $this->rajaongkir->getInternationalOrigin();
 
             $this->assertNotEmpty($response);
-            $this->assertSame(sizeof($response), 2);
+            $this->assertSame(sizeof($response), 501);
 
-            $this->assertSame($response[0]['province'], 'Aceh');
-        } catch (Exception $e){
+            $this->assertSame($response[0]['province'], 'Nanggroe Aceh Darussalam (NAD)');
+        } catch (ApiResponseException $e){
             $this->assertEquals('Connection Timed Out', $e->getMessage());
-            $this->assertEquals(501, $e->getCode());
+            $this->assertEquals(0, $e->getCode());
         }
     }
 
