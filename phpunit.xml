@@ -28,6 +28,9 @@
         <testsuite name="Service">
             <file>./tests/ServiceTest.php</file>
         </testsuite>
+        <testsuite name="Vanilla">
+            <directory suffix="Test.php">./tests/Vanilla</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
