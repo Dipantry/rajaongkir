@@ -18,7 +18,7 @@ class VanillaTestCase extends \Orchestra\Testbench\TestCase
     protected function loadProApi(): void
     {
         $package = 'pro';
-        $this->rajaongkir = new Rajaongkir($this->getApiKey($package), $package, 30);
+        $this->rajaongkir = new Rajaongkir($this->getApiKey($package), $package, 60);
     }
 
     /** @throws ApiResponseException */
