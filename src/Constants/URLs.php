@@ -11,4 +11,7 @@ class URLs
     public static string $province = '/province';
     public static string $city = '/city';
     public static string $subDistrict = '/subdistrict';
+
+    public static string $localCost = '/cost';
+    public static string $internationalCost = '/v2/internationalCost';
 }
