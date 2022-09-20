@@ -103,6 +103,37 @@ class Rajaongkir extends BaseVanillaRajaongkir
     }
 
     /* @throws ApiResponseException */
+    public function getInternationalOrigin(
+        int $cityId = 0,
+        int $provinceId = 0
+    ){
+        if (!$this->policy->allowGetInternationalOrigin())
+            throw new ApiResponseException('You\'re not allowed to get international origin data', 400);
+
+        $query = [];
+        if ($cityId > 0)
+            $query['id'] = $cityId;
+        if ($provinceId > 0)
+            $query['province'] = $provinceId;
+
+        return $this->getHttp(URLs::$internationalOrigin, $query);
+    }
+
+    /* @throws ApiResponseException */
+    public function getInternationalDestination(
+        int $countryId = 0,
+    ){
+        if (!$this->policy->allowGetInternationalDestination())
+            throw new ApiResponseException('You\'re not allowed to get international destination data', 400);
+
+        $query = [];
+        if ($countryId > 0)
+            $query['id'] = $countryId;
+
+        return $this->getHttp(URLs::$internationalDestination, $query);
+    }
+
+    /* @throws ApiResponseException */
     public function getInternationalOngkirCost(
         int $origin,
         int $destination,

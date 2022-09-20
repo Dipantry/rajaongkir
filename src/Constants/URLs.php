@@ -12,6 +12,9 @@ class URLs
     public static string $city = '/city';
     public static string $subDistrict = '/subdistrict';
 
+    public static string $internationalOrigin = '/v2/internationalOrigin';
+    public static string $internationalDestination = '/v2/internationalDestination';
+
     public static string $localCost = '/cost';
     public static string $internationalCost = '/v2/internationalCost';
 
