@@ -89,6 +89,7 @@ class LocationTest extends VanillaTestCase
     public function testGetSubDistrict()
     {
         $response = null;
+
         try {
             $response = $this->rajaongkir->getSubDistrict(1);
         } catch (Exception $e) {

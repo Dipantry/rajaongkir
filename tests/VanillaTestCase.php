@@ -35,6 +35,7 @@ class VanillaTestCase extends \Orchestra\Testbench\TestCase
             'AES-128-CTR',
             $this->encKey,
             0,
-            $this->encIv);
+            $this->encIv
+        );
     }
 }

@@ -27,6 +27,7 @@ class WaybillTest extends VanillaTestCase
     public function testWaybillFailed()
     {
         $response = null;
+
         try {
             $response = $this->rajaongkir
                 ->getWaybill('SOCAG00183235715', RajaongkirCourier::JNE);

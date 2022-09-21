@@ -18,6 +18,7 @@ class InternationalLocationTest extends VanillaTestCase
     public function testGetInternationalOrigin()
     {
         $response = null;
+
         try {
             $response = $this->rajaongkir->getInternationalOrigin();
         } catch (Exception $e) {
@@ -30,6 +31,7 @@ class InternationalLocationTest extends VanillaTestCase
     public function testGetInternationalDestination()
     {
         $response = null;
+
         try {
             $response = $this->rajaongkir->getInternationalDestination();
         } catch (Exception $e) {
