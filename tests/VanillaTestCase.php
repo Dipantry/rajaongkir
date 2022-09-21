@@ -25,13 +25,16 @@ class VanillaTestCase extends \Orchestra\Testbench\TestCase
     protected function loadStarterApi(): void
     {
         $package = 'starter';
-        $this->rajaongkir = new Rajaongkir($this->getApiKey($package), $package, 30);
+        $this->rajaongkir = new Rajaongkir($this->getApiKey($package), $package, 60);
     }
 
     private function getApiKey(string $type): string
     {
         return openssl_decrypt(
             $type == 'pro' ? $this->proKey : $this->starterKey,
-            'AES-128-CTR', $this->encKey, 0, $this->encIv);
+            'AES-128-CTR',
+            $this->encKey,
+            0,
+            $this->encIv);
     }
 }

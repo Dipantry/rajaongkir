@@ -20,7 +20,7 @@ class InternationalLocationTest extends VanillaTestCase
         $response = null;
         try {
             $response = $this->rajaongkir->getInternationalOrigin();
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }
@@ -32,7 +32,7 @@ class InternationalLocationTest extends VanillaTestCase
         $response = null;
         try {
             $response = $this->rajaongkir->getInternationalDestination();
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }

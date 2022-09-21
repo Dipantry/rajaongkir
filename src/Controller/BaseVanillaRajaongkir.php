@@ -21,13 +21,13 @@ class BaseVanillaRajaongkir
     /* @throws ApiResponseException */
     public function __construct(string $apiKey, string $package, int $timeout)
     {
-        if (empty($apiKey)){
+        if (empty($apiKey)) {
             throw new ApiResponseException('API Key not specified');
         } else {
             $this->apiKey = $apiKey;
         }
 
-        if (empty($this->checkPackage($package))){
+        if (empty($this->checkPackage($package))) {
             $this->package = $package;
         } else {
             throw new ApiResponseException($this->checkPackage($package));
@@ -100,7 +100,7 @@ class BaseVanillaRajaongkir
 
     private function checkPackage(string $package): string
     {
-        if (empty($package)){
+        if (empty($package)) {
             return 'API Package not specified';
         }
         if ($package != 'starter' && $package != 'basic' && $package != 'pro') {

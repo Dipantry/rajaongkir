@@ -4,7 +4,6 @@ namespace Dipantry\Rajaongkir\Tests\Vanilla\Pro;
 
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
 use Dipantry\Rajaongkir\Tests\VanillaTestCase;
-use Exception;
 
 class InternationalLocationTest extends VanillaTestCase
 {
@@ -24,7 +23,7 @@ class InternationalLocationTest extends VanillaTestCase
             $this->assertSame(sizeof($response), 501);
 
             $this->assertSame($response[0]['province'], 'Nanggroe Aceh Darussalam (NAD)');
-        } catch (ApiResponseException $e){
+        } catch (ApiResponseException $e) {
             $this->assertEquals('Connection Timed Out', $e->getMessage());
             $this->assertEquals(0, $e->getCode());
         }

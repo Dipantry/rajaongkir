@@ -91,7 +91,7 @@ class LocationTest extends VanillaTestCase
         $response = null;
         try {
             $response = $this->rajaongkir->getSubDistrict(1);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
             $this->assertNotEmpty($e->getMessage());
         }

@@ -18,6 +18,7 @@ class WaybillTest extends TestCase
     public function testWaybill()
     {
         $response = null;
+
         try {
             $response = (new RajaongkirService())
                 ->getWaybill('003013007979', RajaongkirCourier::SICEPAT);

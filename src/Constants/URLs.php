@@ -21,4 +21,5 @@ class URLs
     public static string $currency = '/currency';
 
     public static string $waybill = '/waybill';
+
 }
