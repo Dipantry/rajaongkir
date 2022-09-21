@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Support\Facades\Http;
 use ReflectionException;
 
-class BaseRajaongkir
+class BaseVanillaRajaongkir
 {
     protected string $apiKey;
     protected string $package;
@@ -19,21 +19,19 @@ class BaseRajaongkir
     protected PackagePolicy $policy;
 
     /* @throws ApiResponseException */
-    public function __construct()
+    public function __construct(string $apiKey, string $package, int $timeout)
     {
-        if (empty(config('rajaongkir.api_key'))) {
+        if (empty($apiKey)) {
             throw new ApiResponseException('API Key not specified');
         } else {
-            $this->apiKey = config('rajaongkir.api_key');
+            $this->apiKey = $apiKey;
         }
 
-        if (empty($this->checkPackage())) {
-            $this->package = config('rajaongkir.package');
+        if (empty($this->checkPackage($package))) {
+            $this->package = $package;
         } else {
-            throw new ApiResponseException($this->checkPackage());
+            throw new ApiResponseException($this->checkPackage($package));
         }
-
-        $this->timeout = config('rajaongkir.timeout');
 
         $this->baseUrl = match ($this->package) {
             'basic' => URLs::$basicBaseUrl,
@@ -42,6 +40,7 @@ class BaseRajaongkir
         };
 
         $this->policy = new PackagePolicy($this->package);
+        $this->timeout = $timeout;
     }
 
     /* @throws ApiResponseException */
@@ -99,15 +98,13 @@ class BaseRajaongkir
         }
     }
 
-    private function checkPackage(): string
+    private function checkPackage(string $package): string
     {
-        $package = config('rajaongkir.package');
-
         if (empty($package)) {
             return 'API Package not specified';
         }
-        if (!($package == 'starter' || $package == 'basic' || $package == 'pro')) {
-            return 'Unknown API Package';
+        if ($package != 'starter' && $package != 'basic' && $package != 'pro') {
+            return 'Invalid package';
         }
 
         return '';

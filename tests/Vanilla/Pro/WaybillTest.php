@@ -1,15 +1,15 @@
 <?php
 
-namespace Dipantry\Rajaongkir\Tests\Http\Pro;
+namespace Dipantry\Rajaongkir\Tests\Vanilla\Pro;
 
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
-use Dipantry\Rajaongkir\RajaongkirService;
-use Dipantry\Rajaongkir\Tests\TestCase;
+use Dipantry\Rajaongkir\Tests\VanillaTestCase;
 use Exception;
 
-class WaybillTest extends TestCase
+class WaybillTest extends VanillaTestCase
 {
+    /* @throws ApiResponseException */
     public function setUp(): void
     {
         parent::setUp();
@@ -19,7 +19,7 @@ class WaybillTest extends TestCase
     /* @throws ApiResponseException */
     public function testWaybillSuccess()
     {
-        $response = (new RajaongkirService())
+        $response = $this->rajaongkir
             ->getWaybill('003013007979', RajaongkirCourier::SICEPAT);
         $this->assertNotEmpty($response);
     }
@@ -27,9 +27,8 @@ class WaybillTest extends TestCase
     public function testWaybillFailed()
     {
         $response = null;
-
         try {
-            $response = (new RajaongkirService())
+            $response = $this->rajaongkir
                 ->getWaybill('SOCAG00183235715', RajaongkirCourier::JNE);
         } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());

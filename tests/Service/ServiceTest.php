@@ -2,9 +2,10 @@
 
 /** @noinspection PhpUndefinedClassInspection */
 
-namespace Dipantry\Rajaongkir\Tests;
+namespace Dipantry\Rajaongkir\Tests\Service;
 
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Tests\TestCase;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Rajaongkir;
 

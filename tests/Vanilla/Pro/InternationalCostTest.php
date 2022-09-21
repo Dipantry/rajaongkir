@@ -1,15 +1,15 @@
 <?php
 
-namespace Dipantry\Rajaongkir\Tests\Http\Pro;
+namespace Dipantry\Rajaongkir\Tests\Vanilla\Pro;
 
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
 use Dipantry\Rajaongkir\Models\RajaongkirCourier;
-use Dipantry\Rajaongkir\RajaongkirService;
-use Dipantry\Rajaongkir\Tests\TestCase;
+use Dipantry\Rajaongkir\Tests\VanillaTestCase;
 use Exception;
 
-class InternationalCostTest extends TestCase
+class InternationalCostTest extends VanillaTestCase
 {
+    /** @throws ApiResponseException */
     public function setUp(): void
     {
         parent::setUp();
@@ -19,7 +19,7 @@ class InternationalCostTest extends TestCase
     /** @throws ApiResponseException */
     public function testGetInternationalCost()
     {
-        $response = (new RajaongkirService())
+        $response = $this->rajaongkir
             ->getInternationalOngkirCost(1, 200, 300, RajaongkirCourier::JNE);
         $this->assertNotEmpty($response);
     }
@@ -29,7 +29,7 @@ class InternationalCostTest extends TestCase
         $response = null;
 
         try {
-            $response = (new RajaongkirService())
+            $response = $this->rajaongkir
                 ->getInternationalOngkirCost(1, 200, 300, 'U');
         } catch (Exception $e) {
             $this->assertEquals(400, $e->getCode());
@@ -41,7 +41,7 @@ class InternationalCostTest extends TestCase
     /** @throws ApiResponseException */
     public function testGetInternationalCostUnknownOrigin()
     {
-        $response = (new RajaongkirService())
+        $response = $this->rajaongkir
             ->getInternationalOngkirCost(999, 200, 300, RajaongkirCourier::JNE);
         $this->assertNotEmpty($response);
     }
@@ -49,7 +49,7 @@ class InternationalCostTest extends TestCase
     /** @throws ApiResponseException */
     public function testGetInternationalCostUnknownDestination()
     {
-        $response = (new RajaongkirService())
+        $response = $this->rajaongkir
             ->getInternationalOngkirCost(1, 999, 300, RajaongkirCourier::JNE);
         $this->assertNotEmpty($response);
     }
