@@ -2,7 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Seeds;
 
-use Dipantry\Rajaongkir\Helper\SystemSecurity;
+use Dipantry\Rajaongkir\Policies\PackagePolicy;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +28,8 @@ class ROSubDistrictSeeder extends CsvSeeder
      */
     public function run(): void
     {
-        if (!SystemSecurity::allowSubDistrictSeeding()) {
+        $package = config('rajaongkir.package');
+        if (!(new PackagePolicy($package))->allowGetDistricts()) {
             return;
         }
 

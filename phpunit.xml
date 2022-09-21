@@ -2,34 +2,27 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         backupGlobals="false"
-         backupStaticAttributes="false"
          colors="true"
-         verbose="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+         verbose="true">
 
     <testsuites>
         <testsuite name="Database">
-            <directory suffix="Test.php">./tests/Database</directory>
+            <directory>./tests/Database</directory>
         </testsuite>
         <testsuite name="Exception">
-            <directory suffix="Test.php">./tests/Exception</directory>
+            <directory>./tests/Exception</directory>
         </testsuite>
         <testsuite name="Http">
-            <directory suffix="Test.php">./tests/Http</directory>
+            <directory>./tests/Http</directory>
         </testsuite>
         <testsuite name="Model">
-            <directory suffix="Test.php">./tests/Model</directory>
+            <directory>./tests/Model</directory>
         </testsuite>
         <testsuite name="Service">
-            <directory suffix="Test.php">./tests/Service</directory>
+            <directory>./tests/Service</directory>
         </testsuite>
         <testsuite name="Vanilla">
-            <directory suffix="Test.php">./tests/Vanilla</directory>
+            <directory>./tests/Vanilla</directory>
         </testsuite>
     </testsuites>
 

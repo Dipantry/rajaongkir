@@ -2,7 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Seeds;
 
-use Dipantry\Rajaongkir\Helper\SystemSecurity;
+use Dipantry\Rajaongkir\Policies\PackagePolicy;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +27,8 @@ class ROProvinceSeeder extends CsvSeeder
      */
     public function run(): void
     {
-        if (!SystemSecurity::allowProvinceSeeding()) {
+        $package = config('rajaongkir.package');
+        if (!(new PackagePolicy($package))->allowGetProvinces()) {
             return;
         }
 

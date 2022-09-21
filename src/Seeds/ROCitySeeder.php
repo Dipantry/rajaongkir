@@ -2,7 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Seeds;
 
-use Dipantry\Rajaongkir\Helper\SystemSecurity;
+use Dipantry\Rajaongkir\Policies\PackagePolicy;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
@@ -30,7 +30,8 @@ class ROCitySeeder extends CsvSeeder
      */
     public function run(): void
     {
-        if (!SystemSecurity::allowCitySeeding()) {
+        $package = config('rajaongkir.package');
+        if (!(new PackagePolicy($package))->allowGetCities()) {
             return;
         }
 

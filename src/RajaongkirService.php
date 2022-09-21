@@ -2,6 +2,7 @@
 
 namespace Dipantry\Rajaongkir;
 
+use Dipantry\Rajaongkir\Constants\URLs;
 use Dipantry\Rajaongkir\Controller\BaseRajaongkir;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
 
@@ -50,7 +51,7 @@ class RajaongkirService extends BaseRajaongkir
             ];
         }
 
-        return $this->postHttp('/cost', $body);
+        return $this->postHttp(URLs::$localCost, $body);
     }
 
     /* @throws ApiResponseException */
@@ -92,7 +93,7 @@ class RajaongkirService extends BaseRajaongkir
             ];
         }
 
-        return $this->postHttp('/v2/internationalCost', $body);
+        return $this->postHttp(URLs::$internationalCost, $body);
     }
 
     /* @throws ApiResponseException */
@@ -102,7 +103,7 @@ class RajaongkirService extends BaseRajaongkir
             throw new ApiResponseException('You can\'t get currencies', 400);
         }
 
-        return $this->getHttp('/currency', [], false);
+        return $this->getHttp(URLs::$currency, [], false);
     }
 
     /* @throws ApiResponseException */
@@ -119,6 +120,6 @@ class RajaongkirService extends BaseRajaongkir
             'courier' => $courier,
         ];
 
-        return $this->postHttp('/waybill', $body, false);
+        return $this->postHttp(URLs::$waybill, $body, false);
     }
 }

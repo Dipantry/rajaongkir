@@ -15,7 +15,6 @@ class CurrencyTest extends VanillaTestCase
         $this->loadStarterApi();
     }
 
-    /* @throws ApiResponseException */
     public function testGetCurrency()
     {
         $response = null;
