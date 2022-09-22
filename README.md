@@ -31,8 +31,8 @@ composer require dipantry/rajaongkir
 ```
 
 ## Petunjuk Penggunaan
-### 1. [Laravel/Lumen](https://github.com/dipantry/rajaongkir/docs/HOWTO-Laravel.md)
-### 2. [Vanilla PHP](https://github.com/dipantry/rajaongkir/docs/HOWTO-Vanilla.md)
+### 1. [Laravel/Lumen](https://github.com/Dipantry/rajaongkir/blob/master/docs/HOWTO-Laravel.md)
+### 2. [Vanilla PHP](https://github.com/Dipantry/rajaongkir/blob/master/docs/HOWTO-Vanilla.md)
 
 ---
 # Testing
