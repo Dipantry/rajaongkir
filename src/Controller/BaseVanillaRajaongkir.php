@@ -68,6 +68,7 @@ class BaseVanillaRajaongkir
         if (empty($package)) {
             $message = 'API Package not specified';
         }
+
         try {
             if (!Packages::isValidValue($package)) {
                 $message = 'Invalid Package';
