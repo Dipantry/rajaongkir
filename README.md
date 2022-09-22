@@ -103,8 +103,9 @@ ROCountry::all();
 ```
 
 ## Biaya Pengiriman Lokal
+
 ```php
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 
 \Rajaongkir::getOngkirCost(
     int $origin, int $destination, int $weight, string $courier,
@@ -125,8 +126,9 @@ use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 ```
 
 ## Biaya Pengiriman Internasional
+
 ```php
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 
 \Rajaongkir::getInternationalOngkirCost(
     int $origin, int $destination, int $weight, string $courier,
@@ -146,8 +148,9 @@ use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 ```
 
 ## Melacak Status Pengiriman
+
 ```php
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 
 \Rajaongkir::getWaybill(
     string $waybill, string $courier

@@ -27,23 +27,6 @@ class DatabaseTest extends TestCase
         $this->assertEmpty($countries);
     }
 
-//    public function testBasicDatabaseSeed(){
-//        Config::set('rajaongkir.package', 'basic');
-//        $this->artisan('rajaongkir:seed');
-//
-//        $cities = ROCity::all();
-//        $this->assertNotEmpty($cities);
-//
-//        $subDistricts = ROSubDistrict::all();
-//        $this->assertEmpty($subDistricts);
-//
-//        $citySubDistricts = ROCity::first()->subDistricts;
-//        $this->assertEmpty($citySubDistricts);
-//
-//        $countries = ROCountry::all();
-//        $this->assertNotEmpty($countries);
-//    }
-
     public function testProDatabaseSeed()
     {
         $this->loadProApi();

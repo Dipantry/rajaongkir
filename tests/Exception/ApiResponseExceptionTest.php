@@ -2,8 +2,8 @@
 
 namespace Dipantry\Rajaongkir\Tests\Exception;
 
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
 use Exception;
@@ -33,7 +33,7 @@ class ApiResponseExceptionTest extends TestCase
             (new RajaongkirService())->getOngkirCost(1, 99, 300, RajaongkirCourier::JNE);
         } catch (Exception $e) {
             $this->assertInstanceOf(ApiResponseException::class, $e);
-            $this->assertEquals('API Package not specified', $e->getMessage());
+            $this->assertEquals('Invalid Package', $e->getMessage());
         }
     }
 
@@ -46,7 +46,7 @@ class ApiResponseExceptionTest extends TestCase
             (new RajaongkirService())->getOngkirCost(1, 99, 300, RajaongkirCourier::JNE);
         } catch (Exception $e) {
             $this->assertInstanceOf(ApiResponseException::class, $e);
-            $this->assertEquals('Unknown API Package', $e->getMessage());
+            $this->assertEquals('Invalid Package', $e->getMessage());
         }
     }
 

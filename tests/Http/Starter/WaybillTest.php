@@ -2,7 +2,7 @@
 
 namespace Dipantry\Rajaongkir\Tests\Http\Starter;
 
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 use Dipantry\Rajaongkir\RajaongkirService;
 use Dipantry\Rajaongkir\Tests\TestCase;
 use Exception;

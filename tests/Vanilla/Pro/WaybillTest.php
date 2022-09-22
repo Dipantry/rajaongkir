@@ -2,8 +2,8 @@
 
 namespace Dipantry\Rajaongkir\Tests\Vanilla\Pro;
 
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
 use Dipantry\Rajaongkir\Tests\VanillaTestCase;
 use Exception;
 

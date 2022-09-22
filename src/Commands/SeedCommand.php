@@ -2,6 +2,8 @@
 
 namespace Dipantry\Rajaongkir\Commands;
 
+use Dflydev\DotAccessData\Data;
+use Dipantry\Rajaongkir\Constants\Packages;
 use Dipantry\Rajaongkir\Helper\SystemSecurity;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -43,17 +45,16 @@ class SeedCommand extends Command
 
         if (!SystemSecurity::checkApiKey()) {
             $this->error('API Key is not valid');
-
             return;
         }
 
-        if ($userPackage == 'starter') {
+        if ($userPackage == Packages::STARTER) {
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseSeeder', '--force' => true]);
             $this->info('Seeded: RajaOngkir Starter Package');
-        } elseif ($userPackage == 'basic') {
+        } elseif ($userPackage == Packages::BASIC) {
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseBasicSeeder', '--force' => true]);
             $this->info('Seeded: RajaOngkir Basic Package');
-        } elseif ($userPackage == 'pro') {
+        } elseif ($userPackage == Packages::PRO) {
             Artisan::call('db:seed', ['--class' => 'Dipantry\Rajaongkir\Seeds\DatabaseProSeeder', '--force' => true]);
             $this->info('Seeded: RajaOngkir Pro Package');
         } else {

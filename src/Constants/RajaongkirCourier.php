@@ -2,7 +2,7 @@
 
 /** @noinspection SpellCheckingInspection */
 
-namespace Dipantry\Rajaongkir\Models;
+namespace Dipantry\Rajaongkir\Constants;
 
 use Dipantry\Rajaongkir\Helper\BasicEnum;
 

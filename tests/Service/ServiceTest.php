@@ -4,7 +4,7 @@
 
 namespace Dipantry\Rajaongkir\Tests\Service;
 
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
 use Dipantry\Rajaongkir\Tests\TestCase;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Rajaongkir;

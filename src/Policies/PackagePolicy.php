@@ -2,7 +2,9 @@
 
 namespace Dipantry\Rajaongkir\Policies;
 
-use Dipantry\Rajaongkir\Models\RajaongkirCourier;
+use Dipantry\Rajaongkir\Constants\Packages;
+use Dipantry\Rajaongkir\Constants\RajaongkirCourier;
+use ReflectionException;
 
 class PackagePolicy
 {
@@ -15,64 +17,78 @@ class PackagePolicy
 
     public function allowGetSupportedCouriers(): bool
     {
-        return $this->package != null;
+        try {
+            return Packages::isValidValue($this->package);
+        } catch (ReflectionException) {
+            return false;
+        }
     }
 
     public function allowGetProvinces(): bool
     {
-        return $this->package != null;
+        try {
+            return Packages::isValidValue($this->package);
+        } catch (ReflectionException) {
+            return false;
+        }
     }
 
     public function allowGetCities(): bool
     {
-        return $this->package != null;
+        try {
+            return Packages::isValidValue($this->package);
+        } catch (ReflectionException) {
+            return false;
+        }
     }
 
     public function allowGetDistricts(): bool
     {
-        return $this->package == 'pro';
+        return $this->package == Packages::PRO;
     }
 
     public function allowGetCountries(): bool
     {
-        return $this->package == 'basic' || $this->package == 'pro';
+        return $this->package == Packages::BASIC || $this->package == Packages::PRO;
     }
 
     public function allowGetCosts(string $courierCode): bool
     {
-        if ($this->package == 'starter') {
-            return $courierCode == 'jne' || $courierCode == 'pos' || $courierCode == 'tiki';
+        if ($this->package == Packages::STARTER) {
+            return $courierCode == RajaongkirCourier::JNE ||
+                $courierCode == RajaongkirCourier::POS_INDONESIA ||
+                $courierCode == RajaongkirCourier::TIKI;
         }
 
-        return $this->package == 'basic' || $this->package == 'pro';
+        return $this->package == Packages::BASIC || $this->package == Packages::PRO;
     }
 
     public function allowGetInternationalOrigin(): bool
     {
-        return $this->package == 'basic' || $this->package == 'pro';
+        return $this->package == Packages::BASIC || $this->package == Packages::PRO;
     }
 
     public function allowGetInternationalDestination(): bool
     {
-        return $this->package == 'basic' || $this->package == 'pro';
+        return $this->package == Packages::BASIC || $this->package == Packages::PRO;
     }
 
     public function allowGetInternationalCosts(): bool
     {
-        return $this->package == 'basic' || $this->package == 'pro';
+        return $this->package == Packages::BASIC || $this->package == Packages::PRO;
     }
 
     public function allowGetCurrencies(): bool
     {
-        return $this->package == 'basic' || $this->package == 'pro';
+        return $this->package == Packages::BASIC || $this->package == Packages::PRO;
     }
 
     public function allowGetWaybill(string $courierCode): bool
     {
-        if ($this->package == 'basic') {
+        if ($this->package == Packages::BASIC) {
             return $courierCode == RajaongkirCourier::JNE;
         }
 
-        return $this->package == 'pro';
+        return $this->package == Packages::PRO;
     }
 }

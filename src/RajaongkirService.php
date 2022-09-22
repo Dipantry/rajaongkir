@@ -2,6 +2,7 @@
 
 namespace Dipantry\Rajaongkir;
 
+use Dipantry\Rajaongkir\Constants\Packages;
 use Dipantry\Rajaongkir\Constants\URLs;
 use Dipantry\Rajaongkir\Controller\BaseRajaongkir;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
@@ -29,8 +30,8 @@ class RajaongkirService extends BaseRajaongkir
             throw new ApiResponseException('Courier not allowed', 400);
         }
 
-        if ($this->package == 'pro') {
-            $body = [
+        $body = match ($this->package) {
+            Packages::PRO => [
                 'origin'          => "$origin",
                 'destination'     => "$destination",
                 'weight'          => $weight,
@@ -41,15 +42,14 @@ class RajaongkirService extends BaseRajaongkir
                 'width'           => $width,
                 'height'          => $height,
                 'diameter'        => $diameter,
-            ];
-        } else {
-            $body = [
+            ],
+            default => [
                 'origin'      => "$origin",
                 'destination' => "$destination",
                 'weight'      => $weight,
                 'courier'     => $courier,
-            ];
-        }
+            ]
+        };
 
         return $this->postHttp(URLs::$localCost, $body);
     }
@@ -73,8 +73,8 @@ class RajaongkirService extends BaseRajaongkir
             throw new ApiResponseException('You can\'t get international costs', 400);
         }
 
-        if ($this->package == 'pro') {
-            $body = [
+        $body = match ($this->package) {
+            Packages::PRO => [
                 'origin'      => "$origin",
                 'destination' => "$destination",
                 'weight'      => $weight,
@@ -83,15 +83,14 @@ class RajaongkirService extends BaseRajaongkir
                 'width'       => $width,
                 'height'      => $height,
                 'diameter'    => $diameter,
-            ];
-        } else {
-            $body = [
+            ],
+            default => [
                 'origin'      => "$origin",
                 'destination' => "$destination",
                 'weight'      => $weight,
                 'courier'     => $courier,
-            ];
-        }
+            ]
+        };
 
         return $this->postHttp(URLs::$internationalCost, $body);
     }

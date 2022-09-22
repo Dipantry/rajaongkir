@@ -2,6 +2,7 @@
 
 namespace Dipantry\Rajaongkir;
 
+use Dipantry\Rajaongkir\Constants\Packages;
 use Dipantry\Rajaongkir\Constants\URLs;
 use Dipantry\Rajaongkir\Controller\BaseVanillaRajaongkir;
 use Dipantry\Rajaongkir\Exception\ApiResponseException;
@@ -88,7 +89,7 @@ class Rajaongkir extends BaseVanillaRajaongkir
         }
 
         $body = match ($this->package) {
-            'pro' => [
+            Packages::PRO => [
                 'origin'          => "$origin",
                 'destination'     => "$destination",
                 'weight'          => $weight,
@@ -167,7 +168,7 @@ class Rajaongkir extends BaseVanillaRajaongkir
         }
 
         $body = match ($this->package) {
-            'pro' => [
+            Packages::PRO => [
                 'origin'      => "$origin",
                 'destination' => "$destination",
                 'weight'      => $weight,
