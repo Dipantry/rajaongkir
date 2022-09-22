@@ -2,7 +2,6 @@
 
 namespace Dipantry\Rajaongkir\Commands;
 
-use Dflydev\DotAccessData\Data;
 use Dipantry\Rajaongkir\Constants\Packages;
 use Dipantry\Rajaongkir\Helper\SystemSecurity;
 use Illuminate\Console\Command;
@@ -45,6 +44,7 @@ class SeedCommand extends Command
 
         if (!SystemSecurity::checkApiKey()) {
             $this->error('API Key is not valid');
+
             return;
         }
 
