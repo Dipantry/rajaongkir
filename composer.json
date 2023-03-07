@@ -1,11 +1,19 @@
 {
   "name": "dipantry/rajaongkir",
   "description": "RajaOngkir API wrapper for PHP 8.0+",
+  "keywords": [
+    "cek-ongkir",
+    "rajaongkir",
+    "api",
+    "wrapper",
+    "php",
+    "laravel"
+  ],
   "type": "library",
   "license": "MIT",
   "require": {
     "php": "^8.0",
-    "illuminate/support": "^9.0.0",
+    "illuminate/support": "^9.0.0|^10.0.0",
     "flynsarmy/csv-seeder": "^2.0"
   },
   "require-dev": {
