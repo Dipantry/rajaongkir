@@ -16,6 +16,7 @@ class_alias(Dipantry\Rajaongkir\Facade::class, 'Rajaongkir');
 ```
 
 ### Laravel
+Jika Anda menggunakan Laravel versi di atas 5.5, maka package ini akan otomatis terdaftar sebagai service provider dan alias/facade.<br>
 Dalam file `config/app.php`, masukkan baris berikut pada bagian `providers`
 ```php
 'providers' => [

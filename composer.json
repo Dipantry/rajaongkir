@@ -40,6 +40,16 @@
       "Dipantry\\Rajaongkir\\Tests\\": "tests/"
     }
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Dipantry\\Rajaongkir\\ServiceProvider"
+      ],
+        "aliases": {
+            "Rajaongkir": "Dipantry\\Rajaongkir\\Facade"
+        }
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true
 }
